@@ -17,7 +17,7 @@ function IntroPage() {
       </Button>
       <h4 className="intro-page-login-prompt">
         Already have an account?{" "}
-        <span className="intro-page-login-prompt-link">Login</span>
+        <span className="intro-page-login-prompt-link">Log in</span>
       </h4>
     </div>
   );

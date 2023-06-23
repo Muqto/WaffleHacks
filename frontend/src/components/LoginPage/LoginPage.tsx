@@ -23,7 +23,7 @@ function LoginPage() {
         </Button>
         <h4 className="login-page-signup-prompt">
           Don't have an account?{" "}
-          <span className="login-page-register-prompt-link">Register</span>
+          <span className="login-page-signup-prompt-link">Register</span>
         </h4>
       </div>
     </div>

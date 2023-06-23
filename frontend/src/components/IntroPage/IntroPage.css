@@ -16,12 +16,13 @@
 .intro-page-header {
   font-weight: 800;
   margin-bottom: 2vh;
+  font-size: 40px;
 }
 .intro-page-subheader {
   font-weight: 300;
   margin-top: 0;
-  margin-bottom: 35vh;
-  color: #212A3E;
+  margin-bottom: 30vh;
+  color: #212a3e;
 }
 .intro-page-highlighted-text {
   color: #3e54ac;
@@ -30,6 +31,7 @@
 .intro-page-register-button {
   text-transform: none !important;
   background-color: #3e54ac !important;
+  font-size: 20px !important;
   font-family: "Inter", sans-serif !important;
   font-family: "Red Hat Display", sans-serif !important;
   color: white;
