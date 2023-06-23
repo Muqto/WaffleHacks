@@ -1,0 +1,47 @@
+.intro-page-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ecf2ff;
+  font-family: "Inter", sans-serif;
+  font-family: "Red Hat Display", sans-serif;
+}
+.intro-page-header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 30vh;
+  padding-left: 10vw;
+  justify-content: flex-start;
+}
+.intro-page-header {
+  font-weight: 800;
+  margin-bottom: 2vh;
+}
+.intro-page-subheader {
+  font-weight: 300;
+  margin-top: 0;
+  margin-bottom: 35vh;
+  color: #212A3E;
+}
+.intro-page-highlighted-text {
+  color: #3e54ac;
+  font-weight: 400;
+}
+.intro-page-register-button {
+  text-transform: none !important;
+  background-color: #3e54ac !important;
+  font-family: "Inter", sans-serif !important;
+  font-family: "Red Hat Display", sans-serif !important;
+  color: white;
+  width: 200px;
+  height: 45px;
+  border-radius: 8px !important;
+  border-color: #3e54ac;
+  box-shadow: 0 0 3px #3e54ac;
+}
+.intro-page-login-prompt {
+  font-weight: 400;
+}
+.intro-page-login-prompt-link {
+  color: #3e54ac;
+}
