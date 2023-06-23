@@ -1,0 +1,65 @@
+.login-page-container {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ecf2ff;
+  font-family: "Inter", sans-serif;
+  font-family: "Red Hat Display", sans-serif;
+  position: relative;
+}
+
+.login-page-message {
+  padding-top: 130px;
+  margin: 0;
+  font-weight: 300;
+}
+
+.login-page-form-container {
+  height: 65vh;
+  width: 100vw;
+  max-width: 100vw;
+  background-color: #fcfdff;
+  position: absolute;
+  bottom: 0;
+  border-radius: 35px 35px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.login-page-header {
+  font-size: 38px;
+  margin: 0;
+  padding-top: 0;
+}
+
+.login-page-form-input {
+  margin-top: 50px !important;
+  width: 300px;
+  font-family: "Inter", sans-serif !important;
+  font-family: "Red Hat Display", sans-serif !important;
+}
+
+.login-page-submit-button {
+  margin: 50px 0 100px 0 !important;
+  text-transform: none !important;
+  background-color: #3e54ac !important;
+  font-size: 20px !important;
+  font-family: "Inter", sans-serif !important;
+  font-family: "Red Hat Display", sans-serif !important;
+  color: white;
+  width: 200px;
+  height: 45px;
+  border-radius: 8px !important;
+  border-color: #3e54ac;
+  box-shadow: 0 0 3px #3e54ac;
+}
+
+.login-page-signup-prompt {
+  font-weight: 400;
+}
+
+.login-page-register-prompt-link {
+  color: #3e54ac;
+}
