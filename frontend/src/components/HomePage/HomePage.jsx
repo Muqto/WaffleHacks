@@ -7,7 +7,7 @@ import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
 
 function HomePage() {
-  const { isStudentAccount } = useContext(Context);
+  const { isStudentAccount, setValue } = useContext(Context);
   const navigate = useNavigate();
   return (
     <div className="home-page-container">
@@ -64,7 +64,14 @@ function HomePage() {
       ) : (
         <>
           <h1 className="home-page-owner-message">Scan A Barcode</h1>
-          <Button className="home-page-scan-button" variant="contained">
+          <Button
+            className="home-page-scan-button"
+            variant="contained"
+            onClick={() => {
+              navigate("/scan");
+              setValue(1);
+            }}
+          >
             SCAN
           </Button>
         </>

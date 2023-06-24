@@ -16,12 +16,22 @@ import RestaurantFocusPage from "./components/RestaurantFocusPage/RestaurantFocu
 
 function App() {
   const [slide, setSlide] = useState("");
-  const [isStudentAccount, setIsStudentAccount] = useState(true);
+  const [isStudentAccount, setIsStudentAccount] = useState(false);
+
+  // bottom navigation selected option
+  const [value, setValue] = React.useState(0);
   return (
     <div className="App">
       <Router>
         <Context.Provider
-          value={{ slide, setSlide, isStudentAccount, setIsStudentAccount }}
+          value={{
+            slide,
+            setSlide,
+            isStudentAccount,
+            setIsStudentAccount,
+            value,
+            setValue,
+          }}
         >
           <Routes>
             <Route exact path="/" element={<HomePage />} />

@@ -8,12 +8,13 @@ import HomeIcon from "@mui/icons-material/Home";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
 import ExploreIcon from "@mui/icons-material/Explore";
 import Person2Icon from "@mui/icons-material/Person2";
+import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import { Context } from "../../context/context";
 import { Link } from "react-router-dom";
 
 function BottomNavigation() {
-  const [value, setValue] = React.useState(0);
-  const { slide, setSlide, isStudentAccount } = useContext(Context);
+  const { slide, setSlide, isStudentAccount, value, setValue } =
+    useContext(Context);
   return (
     <div className="bottom-navigation-container">
       {isStudentAccount ? (
@@ -81,7 +82,7 @@ function BottomNavigation() {
             label="Scan"
             component={Link}
             to="/scan"
-            icon={<QrCode2Icon className="bottom-navigation-icon" />}
+            icon={<QrCodeScannerIcon className="bottom-navigation-icon" />}
           />
           <BottomNavigationAction
             label="Profile"
