@@ -28,59 +28,25 @@ function HomePage() {
                   restaurantName={restoName} 
                   points={resto.points} 
                   backgroundColor={"#E1ECC8" }
+                  profilePicture = {resto.profilePicture}
                   onClick={() => navigate(`/restaurantfocus/${resto.restaurantUserId}`)}
               />
             })}
-            {/* <RestaurantVerticalCard
-              restaurantName="McDucknalds"
-              points={95}
-              onClick={() =>
-                navigate(`/restaurantfocus?restaurantName=${"McDucknalds"}`)
-              }
-            />
-            <RestaurantVerticalCard
-              restaurantName="noodles"
-              points={30}
-              backgroundColor={"#E1ECC8"}
-            />
-            <RestaurantVerticalCard
-              restaurantName="Snoopy's"
-              points={25}
-              backgroundColor={"#FFDEDE"}
-            />
-            <RestaurantVerticalCard
-              restaurantName="Naruto's Ramen"
-              points={105}
-            /> */}
           </div>
           <h3 className="home-page-discover-restaurants">
             Discover <span className="home-page-discover-emoji">👀</span>
           </h3>
           <div className="home-page-discover-restaurants-container">
             {allOwners.map((resto) => { 
+              
               return <RestaurantHorizontalCard 
                   restaurantName={resto.username} 
                   numberOfStars={4} 
                   backgroundColor={"#E1ECC8"}
-                  onClick={() => navigate(`/restaurantfocus/${resto.restaurantUserId}`)}
+                  profilePicture = {resto.profilePicture}
+                  onClick={() => navigate(`/restaurantfocus/${resto._id}`)}
             />
             })}
-            {/* <RestaurantHorizontalCard
-              restaurantName="A"
-              numberOfStars={4}
-              onClick={() => navigate(`/restaurantfocus?restaurantName=${"A"}`)}
-            />
-            <RestaurantHorizontalCard
-              restaurantName="B"
-              numberOfStars={5}
-              backgroundColor={"#FFEEBB"}
-            />
-            <RestaurantHorizontalCard
-              restaurantName="C"
-              numberOfStars={2}
-              backgroundColor={"#FFDEDE"}
-            />
-            <RestaurantHorizontalCard restaurantName="D" numberOfStars={5} /> */}
           </div>
         </>
       ) : (

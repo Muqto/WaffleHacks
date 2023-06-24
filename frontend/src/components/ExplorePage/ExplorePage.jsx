@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { fetchRestaurants } from "../../api/UserAPI";
 import RestaurantHorizontalCard from "../RestaurantHorizontalCard/RestaurantHorizontalCard";
 import "./ExplorePage.css";
 import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
+import { Context } from "../../context/context";
 
 function ExplorePage() {
-  const [allRestaurants, setAllRestaurants] = useState();
-  const getAllRestaurants = async () => {
-    const res = await fetchRestaurants()
-      .then((res) => {
-        setAllRestaurants(res.data);
-        return res;
-      })
-      .catch((error) => console.log(error));
-  };
+  const {allOwners} = useContext(Context)
 
-  useEffect(() => {
-    getAllRestaurants();
-  }, []);
   const navigate = useNavigate();
 
   return (
@@ -28,11 +18,12 @@ function ExplorePage() {
         Discover <span className="explore-page-discover-emoji">👀</span>
       </h3>
       <div className="explore-page-discover-restaurants-container">
-        {allRestaurants ? (
-          allRestaurants.map((restaurant) => (
+        {allOwners ? (
+          allOwners.map((restaurant) => (
             <RestaurantHorizontalCard
               restaurantName={restaurant.username}
               numberOfStars={4}
+              profilePicture= {restaurant.profilePicture}
               onClick={() => navigate(`/restaurantfocus/${restaurant._id}`)}
             />
           ))
