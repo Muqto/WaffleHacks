@@ -21,13 +21,15 @@ function App() {
   const [allCustomers, setAllCustomers] = useState([]);
   const [allOwners, setAllOwners] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
-
   const [allReviews, setAllReviews] = useState();
   const [user, setUser] = useState({
     username: "",
     profilePicture: "",
     isStudent: true,
   });
+
+  const [currentUserId, setCurrentUserId] = useState(0)
+
   useEffect(() => {
     setAllUsers([...allCustomers, ...allOwners]);
   }, [allOwners, allCustomers]);
@@ -67,10 +69,12 @@ function App() {
             allReviews,
             allUsers,
             setAllUsers,
+            currentUserId,
+            setCurrentUserId
           }}
         >
           <Routes>
-            <Route exact path="/:userId" element={<HomePage />} />
+            <Route exact path="/" element={<HomePage />} />
             <Route exact path="/signup" element={<SignUpPage />} />
             <Route exact path="/login" element={<LoginPage />} />
             <Route exact path="/intro" element={<IntroPage />} />
