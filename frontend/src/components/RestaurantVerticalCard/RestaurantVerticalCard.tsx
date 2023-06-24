@@ -7,12 +7,14 @@ interface IRestaurantVerticalCardProps {
   restaurantName: string;
   points: number;
   backgroundColor?: string;
+  onClick?: () => void;
 }
 function RestaurantVerticalCard(props: IRestaurantVerticalCardProps) {
   return (
     <div
       className="restaurant-vertical-card-container"
       style={{ backgroundColor: props.backgroundColor }}
+      onClick={props.onClick}
     >
       <Avatar className="restaurant-vertical-card-restaurant-icon" />
       <IconButton size="small" className="subscribed-restaurant-icon-button">

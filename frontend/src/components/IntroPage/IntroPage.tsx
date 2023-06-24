@@ -8,7 +8,7 @@ function IntroPage() {
       <div className="intro-page-header-container">
         <h1 className="intro-page-header">MunchPoints</h1>
         <h3 className="intro-page-subheader">
-          Let's fight food insecurity <span>together</span>.
+          Fighting food insecurity together, one point at a time.
         </h3>
       </div>
 
