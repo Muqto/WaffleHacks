@@ -28,7 +28,7 @@ app.post("/owner/points", modifyPoints)
 app.get("/review/reviews", getAllReviews )
 app.post("/review/post", postReview)
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 6006
 const CONNECTION_URL = "mongodb+srv://Muqto:password14@mern.gxlwzwq.mongodb.net/WaffleHacks?retryWrites=true&w=majority"
 
 mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})

@@ -4,11 +4,14 @@ import RestaurantHorizontalCard from "../RestaurantHorizontalCard/RestaurantHori
 import RestaurantVerticalCard from "../RestaurantVerticalCard/RestaurantVerticalCard";
 import { Context } from "../../context/context";
 import "./HomePage.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function HomePage() {
   const { isStudentAccount, setValue } = useContext(Context);
+  const { userId } = useParams()
   const navigate = useNavigate();
+
+
   return (
     <div className="home-page-container">
       <h3 className="app-logo">MunchPoints</h3>
