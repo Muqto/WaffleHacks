@@ -80,7 +80,7 @@
 }
 
 .signup-page-submit-button {
-  margin: 50px 0 100px 0 !important;
+  margin: 50px 0 50px 0 !important;
   text-transform: none !important;
   background-color: #3e54ac !important;
   font-size: 20px !important;
@@ -95,6 +95,7 @@
 }
 
 .signup-page-login-prompt {
+  margin-bottom: 100px;
   font-weight: 400;
 }
 
