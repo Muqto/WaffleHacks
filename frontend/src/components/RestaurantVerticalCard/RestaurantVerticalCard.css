@@ -1,9 +1,44 @@
 .restaurant-vertical-card-container {
-  width: 130px;
+  min-width: 130px;
   height: 150px;
   background-color: #ecf2ff;
   font-family: "Inter", sans-serif;
   font-family: "Red Hat Display", sans-serif;
   position: relative;
   border-radius: 10px;
+  left: 145px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subscribed-restaurant-icon-button {
+  position: absolute !important;
+  right: 0px;
+  top: 0px;
+}
+
+.subscribed-restaurant-icon {
+  fill: #04009A !important;
+}
+
+.restaurant-vertical-card-restaurant-icon {
+  margin-top: 15px;
+}
+
+.restaurant-vertical-card-restaurant-name {
+  font-weight: 500;
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+.restaurant-vertical-card-restaurant-points {
+  margin-top: 5px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.restaurant-vertical-card-restaurant-points-text {
+  font-size: 10px;
+  font-weight: 400;
 }
