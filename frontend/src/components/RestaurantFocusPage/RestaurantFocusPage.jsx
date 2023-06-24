@@ -23,10 +23,11 @@ import {
   fetchRestaurants,
   addSubscription,
   addNewReview,
+  modifyPoints
 } from "../../api/UserAPI";
 
 function RestaurantFocusPage() {
-  const { isStudentAccount, setValue, currentUserId, allCustomers, setAllCustomers } = useContext(Context);
+  const { currentUserId, allCustomers, setAllCustomers, user } = useContext(Context);
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setReviewStars(0);
@@ -99,6 +100,9 @@ function RestaurantFocusPage() {
       reviewText: reviewText,
       stars: reviewStars,
     });
+    // if (!user.earnedReviewPoints) {
+    //   const result = await 
+    // } 
   };
 
   const navigate = useNavigate();
