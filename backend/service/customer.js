@@ -23,17 +23,15 @@ export const customerLogin = async (req, res) => {
 }
 
 export const customerSignup = async (req, res) => {
-    const {email, username, password, confirmPassword, userType, profilePicture} = req.body
+    const {email, username, password, isStudent, profilePicture} = req.body
     try {
         const existingUser = await Customer.findOne({email})
 
         if (existingUser) return res.status(400).json({message:'User already exists'})
 
-        if(password !== confirmPassword) return res.status(400).json({message: "Passwords don't match"})
-
         const hashedPassword = await bcrypt.hash(password, 12)
 
-        const result = await Customer.create({email, username, password: hashedPassword, userType, profilePicture})
+        const result = await Customer.create({email, username, password: hashedPassword, isStudent, profilePicture})
 
         const token = jwt.sign({email: result.email, id: result._id}, 'test', {expiresIn: '1h'})
 

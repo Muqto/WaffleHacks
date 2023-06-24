@@ -65,15 +65,14 @@
 }
 
 .signup-page-profile-picture {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 100px !important;
+  height: 100px !important;
   overflow: hidden;
   background-color: grey;
 }
 
 .signup-page-form-input {
-  margin-top: 50px !important;
+  margin-top: 25px !important;
   width: 300px;
   font-family: "Inter", sans-serif !important;
   font-family: "Red Hat Display", sans-serif !important;
@@ -101,4 +100,9 @@
 
 .signup-page-login-prompt-link {
   color: #3e54ac;
+}
+
+.fileInput{
+  margin-top: 10px;
+  padding-left: 70px;
 }

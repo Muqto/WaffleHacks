@@ -5,7 +5,7 @@ const customerSchema = new mongoose.Schema({
     email: String,
     username: String,
     password: String,
-    userType: String,
+    isStudent: Boolean,
     profilePicture: String,
     subscribedRestos: {
         type: [restaurantSchema],

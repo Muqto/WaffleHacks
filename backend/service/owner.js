@@ -23,7 +23,7 @@ export const ownerLogin = async (req, res) => {
     }
 }
 export const ownerSignup = async (req, res) => {
-    const {email, username, password, confirmPassword, userType, profilePicture} = req.body
+    const {email, username, password, confirmPassword, isStudent, profilePicture} = req.body
     try {
         const existingUser = await Owner.findOne({email})
 
@@ -33,7 +33,7 @@ export const ownerSignup = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 12)
 
-        const result = await Owner.create({email, username, password: hashedPassword, userType, profilePicture})
+        const result = await Owner.create({email, username, password: hashedPassword, isStudent, profilePicture})
 
         const token = jwt.sign({email: result.email, id: result._id}, 'test', {expiresIn: '1h'})
 

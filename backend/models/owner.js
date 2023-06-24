@@ -4,7 +4,7 @@ const ownerSchema = new mongoose.Schema({
     email: String,
     username: String,
     password: String,
-    userType: String,
+    isStudent: Boolean,
     profilePicture: String,
 })
 
