@@ -7,6 +7,9 @@ import IntroPage from "./components/IntroPage/IntroPage";
 import LoginPage from "./components/LoginPage/LoginPage";
 import RestaurantFocusPage from "./components/RestaurantFocusPage/RestaurantFocusPage";
 import SignUpPage from "./components/SignUpPage/SignUpPage";
+import BarcodePopup from "./components/BarcodePopup/BarcodePopup";
+import BarcodeScanner from "./components/BarcodeScanner/BarcodeScanner";
+import PostScanPage from "./components/BarcodeScanner/PostScanPage/PostScanPage";
 
 function App() {
   return (
@@ -15,9 +18,10 @@ function App() {
       {/* <LoginPage /> */}
       {/* <SignUpPage /> */}
       {/* <HomePage /> */}
-      {/* <ExplorePage /> */}
-      <RestaurantFocusPage restaurantName="Boop" />
-      <BottomNavigation />
+      {/* <BarcodePopup/> */}
+      {/* <BarcodeScanner/> */}
+      <PostScanPage/>
+      {/* <BottomNavigation /> */}
     </div>
   );
 }

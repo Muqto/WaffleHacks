@@ -1,0 +1,86 @@
+/* <div className="post-scan-page-container">
+        <div className="post-scan-page-header">
+            <Avatar className="post-scan-page-avatar"/>
+        </div>
+        <div className="post-scan-page-username">
+            <Typography>Hello John</Typography>
+        </div>
+        <div className="post-scan-page-buttons">
+            <Button variant="contained">Redeem Points</Button>
+            <Button variant="contained">Add Points</Button>
+        </div>
+    </div> */
+
+.post-scan-page-container{
+    height: 100vh;
+    width: 100vw;
+    font-family: "Inter", sans-serif;
+    font-family: "Red Hat Display", sans-serif;
+    background-color: #ecf2ff;
+}
+
+.post-scan-page-header{
+    height: 35%;
+    background-color: #3e54ac;
+    position: relative;
+}
+
+.post-scan-page-avatar{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    width: 150px;
+    height: 150px;
+}
+
+.post-scan-page-username{
+    margin-top: 100px;
+}
+
+.post-scan-page-buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 120px;
+}
+
+.post-scan-page-button1{
+    margin-left: 40px;   
+    text-transform: none !important;
+    background-color: #3e54ac !important;
+    font-size: 20px !important;
+    font-family: "Inter", sans-serif !important;
+    font-family: "Red Hat Display", sans-serif !important;
+    color: white;
+    width: 200px;
+    height: 45px;
+    border-radius: 8px !important;
+    border-color: #3e54ac;
+    box-shadow: 0 0 3px #3e54ac;
+    font-size: 17px !important;
+}
+
+.post-scan-page-button2{
+    margin-right: 40px;  
+    margin-left: 30px;
+    text-transform: none !important;
+    background-color: #3e54ac !important;
+    font-size: 20px !important;
+    font-family: "Inter", sans-serif !important;
+    font-family: "Red Hat Display", sans-serif !important;
+    color: white;
+    width: 200px;
+    height: 45px;
+    border-radius: 8px !important;
+    border-color: #3e54ac;
+    box-shadow: 0 0 3px #3e54ac;
+    font-size: 17px !important;
+}
+
+.post-scan-page-p{
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 20px;
+}
