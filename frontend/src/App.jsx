@@ -17,29 +17,31 @@ import axios from "axios";
 
 function App() {
   const [slide, setSlide] = useState("");
-  const [isStudentAccount, setIsStudentAccount] = useState(true);
+  const [isStudentAccount, setIsStudentAccount] = useState(false);
   const [allCustomers, setAllCustomers] = useState();
   const [allOwners, setAllOwners] = useState();
   const [allReviews, setAllReviews] = useState();
-  const [user, setUser] = useState(
-    {username: '', 
-    profilePicture: '', 
-    isStudent: true}
-    )
-  
-    useEffect(() => {
-      fetchAllData()
-    }, [])
+  const [user, setUser] = useState({
+    username: "",
+    profilePicture: "",
+    isStudent: true,
+  });
 
-    const fetchAllData = async () => {
-      const restoRes = await axios.get('http://localhost:6006/owner/restaurants');
-      const studentRes = await axios.get('http://localhost:6006/customer/customers');
-      const reviewRes = await axios.get('http://localhost:6006/review/reviews');
-      setAllCustomers(studentRes.data)
-      setAllOwners(restoRes.data)
-      setAllReviews(reviewRes)
-    }
-    
+  useEffect(() => {
+    fetchAllData();
+  }, []);
+
+  const fetchAllData = async () => {
+    const restoRes = await axios.get("http://localhost:6006/owner/restaurants");
+    const studentRes = await axios.get(
+      "http://localhost:6006/customer/customers"
+    );
+    const reviewRes = await axios.get("http://localhost:6006/review/reviews");
+    setAllCustomers(studentRes.data);
+    setAllOwners(restoRes.data);
+    setAllReviews(reviewRes);
+  };
+
   // bottom navigation selected option
   const [value, setValue] = React.useState(0);
   return (
@@ -47,9 +49,17 @@ function App() {
       <Router>
         <Context.Provider
           value={{
-            slide, setSlide, isStudentAccount, setIsStudentAccount,
-            value, setValue, user, setUser, allCustomers, allOwners,
-            allReviews
+            slide,
+            setSlide,
+            isStudentAccount,
+            setIsStudentAccount,
+            value,
+            setValue,
+            user,
+            setUser,
+            allCustomers,
+            allOwners,
+            allReviews,
           }}
         >
           <Routes>

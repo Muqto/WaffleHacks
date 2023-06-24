@@ -76,11 +76,17 @@ function BottomNavigation() {
             label="Home"
             component={Link}
             to="/"
+            onClick={() => {
+              setSlide("");
+            }}
             icon={<HomeIcon className="bottom-navigation-icon" />}
           />
           <BottomNavigationAction
             label="Scan"
             component={Link}
+            onClick={() => {
+              setSlide(slide === "" ? "slide" : "");
+            }}
             to="/scan"
             icon={<QrCodeScannerIcon className="bottom-navigation-icon" />}
           />
@@ -88,6 +94,9 @@ function BottomNavigation() {
             label="Profile"
             component={Link}
             to="/profile"
+            onClick={() => {
+              setSlide("");
+            }}
             icon={<Person2Icon className="bottom-navigation-icon" />}
           />
         </MUIBottomNavigation>
