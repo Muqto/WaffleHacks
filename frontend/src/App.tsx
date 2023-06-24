@@ -20,6 +20,7 @@ function App() {
       {/* <HomePage /> */}
       {/* <BarcodePopup/> */}
       {/* <BarcodeScanner/> */}
+      {/* <ExplorePage /> */}
       <PostScanPage/>
       {/* <BottomNavigation /> */}
     </div>
