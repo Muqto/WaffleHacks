@@ -26,7 +26,7 @@ import {
 } from "../../api/UserAPI";
 
 function RestaurantFocusPage() {
-  const { isStudentAccount, setValue, currentUserId } = useContext(Context);
+  const { isStudentAccount, setValue, currentUserId, allCustomers, setAllCustomers } = useContext(Context);
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setReviewStars(0);
@@ -84,6 +84,7 @@ function RestaurantFocusPage() {
       customerId: currentUserId,
       ownerId: currentRestaurant[0]._id,
     });
+    setAllCustomers([...allCustomers.filter(student => student._id !== currentUserId), res.data])
   };
 
   const [reviewText, setReviewText] = useState("");

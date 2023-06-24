@@ -37,9 +37,9 @@ function HomePage() {
           <h3 className="home-page-your-restaurants">Your restaurants</h3>
           <div className="home-page-your-restaurants-card-carousel">
             {currentStudentUser.subscribedRestos.map((resto) => {
-              const restoName = allOwners.filter(
+              const restoName = allOwners.find(
                 (r) => r._id === resto.restaurantUserId
-              )[0].username;
+              ).username;
 
               return (
                 <RestaurantVerticalCard

@@ -36,7 +36,6 @@ function App() {
   }, [allOwners, allCustomers]);
 
   useEffect(() => {
-    console.log("fetching all...")
     fetchAllData();
   }, [locationChange]);
 
@@ -74,7 +73,9 @@ function App() {
             currentUserId,
             setCurrentUserId,
             setLocationChanged,
-            locationChange
+            locationChange,
+            setAllOwners,
+            setAllCustomers
           }}
         >
           <Routes>
