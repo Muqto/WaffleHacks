@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 import RestaurantVerticalCard from "../RestaurantVerticalCard/RestaurantVerticalCard";
 
 function ProfilePage() {
-  const {user, allOwners} = useContext(Context)
+  const {user, setIsLoggedIn} = useContext(Context)
   const navigate = useNavigate()
   return (
     <div className="profile-page-container">
@@ -16,7 +16,12 @@ function ProfilePage() {
       <div className="profile-bottom-div">
         <h1 className="profile-page-username">{user.username}</h1>
         <div className="profile-page-logout">
-        <Button onClick={() => navigate("/login")} className="profile-page-logout-button" variant="outlined">
+        <Button onClick={() => {
+          setIsLoggedIn(false)
+          navigate("/login")
+          }} 
+          className="profile-page-logout-button" 
+          variant="outlined">
           Logout
         </Button>
       </div>
