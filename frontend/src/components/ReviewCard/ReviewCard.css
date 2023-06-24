@@ -1,0 +1,29 @@
+.review-card-container {
+  background-color: #ecf2ff;
+  height: 80px;
+  width: 350px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.review-card-reviewer-avatar {
+  margin-left: 20px;
+}
+
+.review-card-review-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 20px;
+}
+
+.review-card-reviewer {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.review-card-review {
+  font-size: 15px;
+}

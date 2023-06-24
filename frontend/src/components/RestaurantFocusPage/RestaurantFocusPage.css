@@ -1,0 +1,45 @@
+.restaurant-focus-page-container {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ecf2ff;
+  font-family: "Inter", sans-serif;
+  font-family: "Red Hat Display", sans-serif;
+  position: relative;
+}
+
+.restaurant-focus-page-image {
+
+}
+
+.restaurant-focus-page-info-panel {
+  height: 65vh;
+  width: 100vw;
+  max-width: 100vw;
+  background-color: #fcfdff;
+  position: absolute;
+  bottom: 0;
+  border-radius: 50px 50px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.restaurant-focus-page-restaurant-name {
+  margin-top: 35px;
+}
+
+.restaurant-focus-page-review-button {
+  margin: 20px 0 100px 0 !important;
+  text-transform: none !important;
+  background-color: #3e54ac !important;
+  font-size: 20px !important;
+  font-family: "Inter", sans-serif !important;
+  font-family: "Red Hat Display", sans-serif !important;
+  color: white;
+  width: 250px;
+  height: 45px;
+  border-radius: 8px !important;
+  border-color: #3e54ac;
+}

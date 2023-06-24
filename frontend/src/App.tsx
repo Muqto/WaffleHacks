@@ -5,6 +5,7 @@ import ExplorePage from "./components/ExplorePage/ExplorePage";
 import HomePage from "./components/HomePage/HomePage";
 import IntroPage from "./components/IntroPage/IntroPage";
 import LoginPage from "./components/LoginPage/LoginPage";
+import RestaurantFocusPage from "./components/RestaurantFocusPage/RestaurantFocusPage";
 import SignUpPage from "./components/SignUpPage/SignUpPage";
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
       {/* <LoginPage /> */}
       {/* <SignUpPage /> */}
       {/* <HomePage /> */}
-      <ExplorePage />
+      {/* <ExplorePage /> */}
+      <RestaurantFocusPage restaurantName="Boop" />
       <BottomNavigation />
     </div>
   );
