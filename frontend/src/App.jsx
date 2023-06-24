@@ -28,7 +28,7 @@ function App() {
   const [allOwners, setAllOwners] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   const [allReviews, setAllReviews] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({
     username: "",
     profilePicture: "",
@@ -83,7 +83,7 @@ function App() {
             setBarcode,
             setAllCustomers,
             isLoggedIn,
-            setIsLoggedIn
+            setIsLoggedIn,
           }}
         >
           <Routes>
