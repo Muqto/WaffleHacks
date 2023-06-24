@@ -1,3 +1,4 @@
+import { BottomNavigation } from "@mui/material";
 import React from "react";
 import RestaurantHorizontalCard from "../RestaurantHorizontalCard/RestaurantHorizontalCard";
 import RestaurantVerticalCard from "../RestaurantVerticalCard/RestaurantVerticalCard";
