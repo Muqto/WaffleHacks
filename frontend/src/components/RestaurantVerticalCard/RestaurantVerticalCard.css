@@ -1,0 +1,9 @@
+.restaurant-vertical-card-container {
+  width: 130px;
+  height: 150px;
+  background-color: #ecf2ff;
+  font-family: "Inter", sans-serif;
+  font-family: "Red Hat Display", sans-serif;
+  position: relative;
+  border-radius: 10px;
+}
