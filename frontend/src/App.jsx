@@ -9,7 +9,7 @@ import BarcodePopup from "./components/BarcodePopup/BarcodePopup";
 import BarcodeScanner from "./components/BarcodeScanner/BarcodeScanner";
 import PostScanPage from "./components/BarcodeScanner/PostScanPage/PostScanPage";
 import { Context } from "./context/context";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import ExplorePage from "./components/ExplorePage/ExplorePage";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import RestaurantFocusPage from "./components/RestaurantFocusPage/RestaurantFocusPage";
@@ -27,6 +27,7 @@ function App() {
     profilePicture: "",
     isStudent: true,
   });
+  const [locationChange, setLocationChanged] = useState(false)
 
   const [currentUserId, setCurrentUserId] = useState(0)
 
@@ -35,8 +36,9 @@ function App() {
   }, [allOwners, allCustomers]);
 
   useEffect(() => {
+    console.log("fetching all...")
     fetchAllData();
-  }, []);
+  }, [locationChange]);
 
   const fetchAllData = async () => {
     const restoRes = await axios.get("http://localhost:6006/owner/restaurants");
@@ -70,7 +72,9 @@ function App() {
             allUsers,
             setAllUsers,
             currentUserId,
-            setCurrentUserId
+            setCurrentUserId,
+            setLocationChanged,
+            locationChange
           }}
         >
           <Routes>

@@ -26,7 +26,7 @@ import {
 } from "../../api/UserAPI";
 
 function RestaurantFocusPage() {
-  const { isStudentAccount, setValue, user } = useContext(Context);
+  const { isStudentAccount, setValue, currentUserId } = useContext(Context);
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setReviewStars(0);
@@ -80,10 +80,10 @@ function RestaurantFocusPage() {
   // add restaurant to subscription (student accounts)
   const handleSubscriptionAddition = async () => {
     // TO DO WHEN WE GET USER ID
-    // const res = await addSubscription({
-    //   customerId: "",
-    //   ownerId: currentRestaurant[0]._id,
-    // });
+    const res = await addSubscription({
+      customerId: currentUserId,
+      ownerId: currentRestaurant[0]._id,
+    });
   };
 
   const [reviewText, setReviewText] = useState("");

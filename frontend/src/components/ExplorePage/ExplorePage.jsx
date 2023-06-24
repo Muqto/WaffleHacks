@@ -7,7 +7,7 @@ import { CircularProgress } from "@mui/material";
 import { Context } from "../../context/context";
 
 function ExplorePage() {
-  const {allOwners} = useContext(Context)
+  const {allOwners, locationChanged, setLocationChanged} = useContext(Context)
 
   const navigate = useNavigate();
 
@@ -24,7 +24,10 @@ function ExplorePage() {
               restaurantName={restaurant.username}
               numberOfStars={4}
               profilePicture= {restaurant.profilePicture}
-              onClick={() => navigate(`/restaurantfocus/${restaurant._id}`)}
+              onClick={() => {
+                navigate(`/restaurantfocus/${restaurant._id}`)
+                setLocationChanged(!locationChanged)
+                }}
             />
           ))
         ) : (
