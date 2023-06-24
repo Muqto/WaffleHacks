@@ -42,7 +42,7 @@ function RestaurantFocusPage(props: IRestaurantFocusPage) {
 
   const navigate = useNavigate();
   const handleReturn = () => {
-    navigate("/");
+    navigate(-1);
   };
 
   return (

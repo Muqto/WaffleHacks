@@ -1,14 +1,16 @@
 import { BottomNavigation, Button } from "@mui/material";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import RestaurantHorizontalCard from "../RestaurantHorizontalCard/RestaurantHorizontalCard";
 import RestaurantVerticalCard from "../RestaurantVerticalCard/RestaurantVerticalCard";
 import { Context } from "../../context/context";
 import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
+import { fetchRestaurants } from "../../api/UserAPI";
 
 function HomePage() {
   const { isStudentAccount, setValue } = useContext(Context);
   const navigate = useNavigate();
+
   return (
     <div className="home-page-container">
       <h3 className="app-logo">MunchPoints</h3>

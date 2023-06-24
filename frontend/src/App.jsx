@@ -16,7 +16,7 @@ import RestaurantFocusPage from "./components/RestaurantFocusPage/RestaurantFocu
 
 function App() {
   const [slide, setSlide] = useState("");
-  const [isStudentAccount, setIsStudentAccount] = useState(false);
+  const [isStudentAccount, setIsStudentAccount] = useState(true);
 
   // bottom navigation selected option
   const [value, setValue] = React.useState(0);
