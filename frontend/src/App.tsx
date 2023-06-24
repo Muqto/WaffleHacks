@@ -13,18 +13,19 @@ import PostScanPage from "./components/BarcodeScanner/PostScanPage/PostScanPage"
 import { Context } from "./context/context";
 
 function App() {
-  const [slide, setSlide] = useState("")
+  const [slide, setSlide] = useState("");
   return (
     <div className="App">
-      <Context.Provider value={{slide, setSlide}}>
-      {/* <IntroPage /> */}
-      {/* <LoginPage /> */}
-      {/* <SignUpPage /> */}
-      {/* <HomePage /> */}
-      <BarcodePopup/>
-      {/* <BarcodeScanner/> */}
-      {/* <PostScanPage/> */}
-      <BottomNavigation />
+      <Context.Provider value={{ slide, setSlide }}>
+        {/* <IntroPage /> */}
+        {/* <LoginPage /> */}
+        {/* <SignUpPage /> */}
+        {/* <HomePage /> */}
+        {/* <BarcodePopup/> */}
+        {/* <BarcodeScanner/> */}
+        {/* <PostScanPage/> */}
+        <RestaurantFocusPage restaurantName="McDucknalds" />
+        <BottomNavigation />
       </Context.Provider>
     </div>
   );
