@@ -3,14 +3,14 @@ import React from "react";
 import "./ReviewCard.css";
 
 interface IReviewCardProps {
-  reviewer: string;
+  reviewer?: string;
   review?: string;
   numberOfStars: number;
 }
 function ReviewCard(props: IReviewCardProps) {
   return (
     <div className="review-card-container">
-      <Avatar className="review-card-reviewer-avatar"/>
+      <Avatar className="review-card-reviewer-avatar" />
       <div className="review-card-review-text">
         <div className="review-card-reviewer">{props.reviewer}</div>
         <div className="review-card-review">{props.review}</div>
