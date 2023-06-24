@@ -27,7 +27,8 @@ function App() {
   const [allCustomers, setAllCustomers] = useState([]);
   const [allOwners, setAllOwners] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
-  const [allReviews, setAllReviews] = useState();
+  const [allReviews, setAllReviews] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState({
     username: "",
     profilePicture: "",
@@ -80,7 +81,9 @@ function App() {
             setCurrentUserId,
             barcode,
             setBarcode,
-            setAllCustomers
+            setAllCustomers,
+            isLoggedIn,
+            setIsLoggedIn
           }}
         >
           <Routes>
@@ -106,7 +109,7 @@ function App() {
             {/* <PostScanPage/> */}
           </Routes>
           <BarcodePopup />
-          <BottomNavigation />
+          {isLoggedIn ? <BottomNavigation /> : null}
         </Context.Provider>
       </Router>
     </div>

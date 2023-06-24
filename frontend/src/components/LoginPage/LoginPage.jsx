@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const navigate = useNavigate()
-  const {isStudentAccount, setUser, allOwners, allCustomers, allUsers, currentUserId, setCurrentUserId} = useContext(Context)
+  const {setUser, allUsers, setCurrentUserId, setIsLoggedIn} = useContext(Context)
   const [loginData, setLoginData] = useState({
     username: '', password : ''
   })
@@ -20,6 +20,7 @@ function LoginPage() {
     const newUser = res.data.result
     setUser(newUser)
     setCurrentUserId(newUser._id)
+    setIsLoggedIn(true)
     navigate(`/`)
   }
 
