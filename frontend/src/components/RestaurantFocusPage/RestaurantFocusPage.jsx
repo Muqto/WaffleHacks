@@ -125,14 +125,13 @@ function RestaurantFocusPage() {
               <AddCircleIcon className="restaurant-focus-page-add-icon" />
             </IconButton>
             <h1 className="restaurant-focus-page-restaurant-name">
-              {currentRestaurant[0].username}
+              {currentRestaurant[0]?.username}
             </h1>
             {restaurantReviews ? (
               restaurantReviews
                 .slice(0, 3)
                 .map((review) => (
                   <ReviewCard
-                    reviewer={review.reviewerId}
                     review={`"${review.reviewText}"`}
                     numberOfStars={review.stars}
                   />
@@ -157,7 +156,7 @@ function RestaurantFocusPage() {
               open={open}
               onClose={handleClose}
             >
-              <DialogTitle>{currentRestaurant[0].username}</DialogTitle>
+              <DialogTitle>{currentRestaurant[0]?.username}</DialogTitle>
               <DialogContent>
                 <DialogContentText>What'd you think?</DialogContentText>
                 <TextField
