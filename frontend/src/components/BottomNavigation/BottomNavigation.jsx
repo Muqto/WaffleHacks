@@ -9,11 +9,12 @@ import QrCode2Icon from "@mui/icons-material/QrCode2";
 import ExploreIcon from "@mui/icons-material/Explore";
 import Person2Icon from "@mui/icons-material/Person2";
 import { Context } from "../../context/context";
+import { Link } from "react-router-dom";
 
 function BottomNavigation() {
   const [value, setValue] = React.useState(0);
   const [isStudentAccount, setIsStudentAccount] = useState(true);
-  const {slide, setSlide} = useContext(Context)
+  const { slide, setSlide } = useContext(Context);
   return (
     <div className="bottom-navigation-container">
       {isStudentAccount ? (
@@ -26,22 +27,38 @@ function BottomNavigation() {
           }}
         >
           <BottomNavigationAction
-            onClick={() => {setSlide("")}}
+            component={Link}
+            to="/"
+            onClick={() => {
+              setSlide("");
+            }}
             label="Home"
             icon={<HomeIcon className="bottom-navigation-icon" />}
           />
           <BottomNavigationAction
-            onClick={() => {setSlide(slide === "" ? "slide" : "")}}
+            component={Link}
+            to="/scan"
+            onClick={() => {
+              setSlide(slide === "" ? "slide" : "");
+            }}
             label="Barcode"
             icon={<QrCode2Icon className="bottom-navigation-icon" />}
           />
           <BottomNavigationAction
-            onClick={() => {setSlide("")}}
+            component={Link}
+            to="/explore"
+            onClick={() => {
+              setSlide("");
+            }}
             label="Explore"
             icon={<ExploreIcon className="bottom-navigation-icon" />}
           />
           <BottomNavigationAction
-            onClick={() => {setSlide("")}}
+            component={Link}
+            to="/profile"
+            onClick={() => {
+              setSlide("");
+            }}
             label="Profile"
             icon={<Person2Icon className="bottom-navigation-icon" />}
           />
@@ -55,9 +72,24 @@ function BottomNavigation() {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Home" />
-          <BottomNavigationAction label="Scan" />
-          <BottomNavigationAction label="Profile" />
+          <BottomNavigationAction
+            label="Home"
+            component={Link}
+            to="/"
+            icon={<HomeIcon className="bottom-navigation-icon" />}
+          />
+          <BottomNavigationAction
+            label="Scan"
+            component={Link}
+            to="/scan"
+            icon={<QrCode2Icon className="bottom-navigation-icon" />}
+          />
+          <BottomNavigationAction
+            label="Profile"
+            component={Link}
+            to="/profile"
+            icon={<Person2Icon className="bottom-navigation-icon" />}
+          />
         </MUIBottomNavigation>
       )}
     </div>

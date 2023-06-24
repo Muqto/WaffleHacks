@@ -1,6 +1,7 @@
 .explore-page-container {
   margin: 0;
   width: 100vw;
+  height: 100vh;
   max-height: 100vh;
   background-color: #fcfdff;
   font-family: "Inter", sans-serif;
