@@ -79,6 +79,9 @@ function App() {
             setAllUsers,
             currentUserId,
             setCurrentUserId,
+            barcode,
+            setBarcode,
+            setLocationChanged,
           }}
         >
           <Routes>
