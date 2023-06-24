@@ -7,6 +7,7 @@ interface IRestaurantHorizontalCardProps {
   restaurantName: string;
   numberOfStars: number;
   backgroundColor?: string;
+  profilePicture: string;
   onClick?: () => void;
 }
 function RestaurantHorizontalCard(props: IRestaurantHorizontalCardProps) {
@@ -16,7 +17,7 @@ function RestaurantHorizontalCard(props: IRestaurantHorizontalCardProps) {
       style={{ backgroundColor: props.backgroundColor }}
       onClick={props.onClick}
     >
-      <Avatar className="restaurant-horizontal-card-restaurant-icon" />
+      <Avatar src = {props.profilePicture} className="restaurant-horizontal-card-restaurant-icon" />
       <div className="restaurant-horizontal-card-text-container">
         <h4 className="restaurant-vertical-card-restaurant-name">
           {props.restaurantName}
