@@ -19,12 +19,12 @@ function App() {
       <Context.Provider value={{ slide, setSlide }}>
         {/* <IntroPage /> */}
         {/* <LoginPage /> */}
-        {/* <SignUpPage /> */}
+        <SignUpPage />
         {/* <HomePage /> */}
         {/* <BarcodePopup/> */}
         {/* <BarcodeScanner/> */}
         {/* <PostScanPage/> */}
-        <RestaurantFocusPage restaurantName="McDucknalds" />
+        {/* <RestaurantFocusPage restaurantName="McDucknalds" /> */}
         <BottomNavigation />
       </Context.Provider>
     </div>
