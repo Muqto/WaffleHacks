@@ -2,7 +2,8 @@
     position: relative;
     height: 100vh;
     width: 100%;
-    background-color: #fcfdff;;
+    background-color: #fcfdff;
+    overflow-y: hidden;
 }
 .barcode-popup-paper{
     position: absolute;
