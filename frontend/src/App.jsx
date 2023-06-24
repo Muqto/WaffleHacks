@@ -27,8 +27,10 @@ function App() {
     profilePicture: "",
     isStudent: true,
   });
+  // FOR TESTING I HAVE HARD CODED THE BARCODE
+  const [barcode, setBarcode] = useState("64971f7d5846536b6831b2a8");
 
-  const [currentUserId, setCurrentUserId] = useState(0)
+  const [currentUserId, setCurrentUserId] = useState(0);
 
   useEffect(() => {
     setAllUsers([...allCustomers, ...allOwners]);
@@ -70,7 +72,9 @@ function App() {
             allUsers,
             setAllUsers,
             currentUserId,
-            setCurrentUserId
+            setCurrentUserId,
+            barcode,
+            setBarcode,
           }}
         >
           <Routes>
