@@ -6,6 +6,7 @@ import { Context } from "../../context/context";
 import "./HomePage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchRestaurants } from "../../api/UserAPI";
+import { setSyntheticLeadingComments } from "typescript";
 
 function HomePage() {
   const {
@@ -17,6 +18,7 @@ function HomePage() {
     allReviews,
     allUsers,
     currentUserId,
+    setSlide,
   } = useContext(Context);
   const navigate = useNavigate();
   const currentStudentUser = allCustomers.find(
@@ -38,7 +40,6 @@ function HomePage() {
               const restoName = allOwners.filter(
                 (r) => r._id === resto.restaurantUserId
               )[0].username;
-              console.log(restoName);
 
               return (
                 <RestaurantVerticalCard
@@ -63,7 +64,7 @@ function HomePage() {
                   restaurantName={resto.username}
                   numberOfStars={4}
                   backgroundColor={"#E1ECC8"}
-                  profilePicture = {resto.profilePicture}
+                  profilePicture={resto.profilePicture}
                   onClick={() =>
                     navigate(`/restaurantfocus/${resto.restaurantUserId}`)
                   }
@@ -81,6 +82,7 @@ function HomePage() {
             onClick={() => {
               navigate("/scan");
               setValue(1);
+              setSlide("slide");
             }}
           >
             SCAN
