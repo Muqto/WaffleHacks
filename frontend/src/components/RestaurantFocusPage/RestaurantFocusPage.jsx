@@ -16,7 +16,7 @@ import "./RestaurantFocusPage.css";
 import EditIcon from "@mui/icons-material/Edit";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {
   fetchReviews,
@@ -41,44 +41,33 @@ function RestaurantFocusPage() {
   };
 
   // get restaurant name from url
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [gotRestaurantName, setGotRestaurantName] = useState(false);
   const [gotCurrentRestaurant, setGotCurrentRestaurant] = useState(false);
-  const [restaurantName, setRestaurantName] = useState("");
-  useEffect(() => {
-    setRestaurantName(searchParams.get("restaurantName"));
-    setGotRestaurantName(true);
-  }, []);
+  let { id } = useParams();
 
-  // get restaurant id from name
+  // get restaurant name from id
   const [currentRestaurant, setCurrentRestaurant] = useState();
   const getCurrentRestaurant = async () => {
     const res = await fetchRestaurants()
       .then((res) => {
         setCurrentRestaurant(
-          res.data.filter(
-            (restaurant) => restaurant.username === restaurantName
-          )
+          res.data.filter((restaurant) => restaurant._id === id)
         );
         setGotCurrentRestaurant(true);
         return res;
       })
       .catch((error) => console.log(error));
   };
-
   useEffect(() => {
     getCurrentRestaurant();
-  }, [gotRestaurantName]);
+  }, [id]);
 
-  // get all reviews
+  // get all reviews corresponding to current restaurant
   const [restaurantReviews, setRestaurantReviews] = useState();
   const getAllRestaurantReviews = async () => {
     const res = await fetchReviews()
       .then((res) => {
         setRestaurantReviews(
-          res.data.filter(
-            (review) => review.restaurantId === currentRestaurant[0]?._id
-          )
+          res.data.filter((review) => review.restaurantId === id)
         );
         return res;
       })
@@ -86,7 +75,7 @@ function RestaurantFocusPage() {
   };
   useEffect(() => {
     getAllRestaurantReviews();
-  }, [currentRestaurant]);
+  }, [id]);
 
   // add restaurant to subscription (student accounts)
   const handleSubscriptionAddition = async () => {
@@ -105,7 +94,7 @@ function RestaurantFocusPage() {
     // get user id from global username (from context)
     const res = await addNewReview({
       reviewerId: "649633412950953cec504302", // USER ID
-      restaurantId: currentRestaurant[0]._id,
+      restaurantId: id,
       reviewText: reviewText,
       stars: reviewStars,
     });
@@ -118,7 +107,7 @@ function RestaurantFocusPage() {
 
   return (
     <div className="restaurant-focus-page-container">
-      {gotRestaurantName ? (
+      {gotCurrentRestaurant ? (
         <>
           <IconButton
             className="restaurant-focus-page-return-arrow"
@@ -135,7 +124,7 @@ function RestaurantFocusPage() {
               <AddCircleIcon className="restaurant-focus-page-add-icon" />
             </IconButton>
             <h1 className="restaurant-focus-page-restaurant-name">
-              {restaurantName}
+              {currentRestaurant[0].username}
             </h1>
             {restaurantReviews ? (
               restaurantReviews
@@ -167,7 +156,7 @@ function RestaurantFocusPage() {
               open={open}
               onClose={handleClose}
             >
-              <DialogTitle>{restaurantName}</DialogTitle>
+              <DialogTitle>{currentRestaurant[0].username}</DialogTitle>
               <DialogContent>
                 <DialogContentText>What'd you think?</DialogContentText>
                 <TextField

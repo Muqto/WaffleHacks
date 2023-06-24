@@ -3,6 +3,7 @@ import { fetchRestaurants } from "../../api/UserAPI";
 import RestaurantHorizontalCard from "../RestaurantHorizontalCard/RestaurantHorizontalCard";
 import "./ExplorePage.css";
 import { useNavigate } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 function ExplorePage() {
   const [allRestaurants, setAllRestaurants] = useState();
@@ -27,18 +28,19 @@ function ExplorePage() {
         Discover <span className="explore-page-discover-emoji">👀</span>
       </h3>
       <div className="explore-page-discover-restaurants-container">
-        {allRestaurants &&
+        {allRestaurants ? (
           allRestaurants.map((restaurant) => (
             <RestaurantHorizontalCard
               restaurantName={restaurant.username}
               numberOfStars={4}
-              onClick={() =>
-                navigate(
-                  `/restaurantfocus?restaurantName=${restaurant.username}`
-                )
-              }
+              onClick={() => navigate(`/restaurantfocus/${restaurant._id}`)}
             />
-          ))}
+          ))
+        ) : (
+          <div className="explore-page-progress-container">
+            <CircularProgress />
+          </div>
+        )}
       </div>
     </div>
   );

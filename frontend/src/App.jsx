@@ -20,31 +20,33 @@ function App() {
   const [isStudentAccount, setIsStudentAccount] = useState(true);
   const [allCustomers, setAllCustomers] = useState([]);
   const [allOwners, setAllOwners] = useState([]);
-  const [allUsers, setAllUsers] = useState([])
-  
+  const [allUsers, setAllUsers] = useState([]);
+
   const [allReviews, setAllReviews] = useState();
-  const [user, setUser] = useState(
-    {username: '', 
-    profilePicture: '', 
-    isStudent: true}
-    )
-    useEffect(() => {
-      setAllUsers([...allCustomers, ...allOwners])
-    }, [allOwners, allCustomers])
+  const [user, setUser] = useState({
+    username: "",
+    profilePicture: "",
+    isStudent: true,
+  });
+  useEffect(() => {
+    setAllUsers([...allCustomers, ...allOwners]);
+  }, [allOwners, allCustomers]);
 
-    useEffect(() => {
-      fetchAllData()
-    }, [])
+  useEffect(() => {
+    fetchAllData();
+  }, []);
 
-    const fetchAllData = async () => {
-      const restoRes = await axios.get('http://localhost:6006/owner/restaurants');
-      const studentRes = await axios.get('http://localhost:6006/customer/customers');
-      const reviewRes = await axios.get('http://localhost:6006/review/reviews');
-      setAllCustomers(studentRes.data)
-      setAllOwners(restoRes.data)
-      setAllReviews(reviewRes)
-    }
-    
+  const fetchAllData = async () => {
+    const restoRes = await axios.get("http://localhost:6006/owner/restaurants");
+    const studentRes = await axios.get(
+      "http://localhost:6006/customer/customers"
+    );
+    const reviewRes = await axios.get("http://localhost:6006/review/reviews");
+    setAllCustomers(studentRes.data);
+    setAllOwners(restoRes.data);
+    setAllReviews(reviewRes);
+  };
+
   // bottom navigation selected option
   const [value, setValue] = React.useState(0);
   return (
@@ -52,9 +54,19 @@ function App() {
       <Router>
         <Context.Provider
           value={{
-            slide, setSlide, isStudentAccount, setIsStudentAccount,
-            value, setValue, user, setUser, allCustomers, allOwners,
-            allReviews, allUsers, setAllUsers
+            slide,
+            setSlide,
+            isStudentAccount,
+            setIsStudentAccount,
+            value,
+            setValue,
+            user,
+            setUser,
+            allCustomers,
+            allOwners,
+            allReviews,
+            allUsers,
+            setAllUsers,
           }}
         >
           <Routes>
@@ -83,8 +95,7 @@ function App() {
         </Context.Provider>
       </Router>
     </div>
-  )
-        
+  );
 }
 
 export default App;
