@@ -35,8 +35,21 @@
 }
 
 .barcode-scanner-container > video {
-  height: 85%;
+  height: 75%;
   width: 100%;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
+}
+
+.barcode-confirm-button {
+  text-transform: none !important;
+  background-color: #3e54ac !important;
+  font-size: 18px !important;
+  font-family: "Inter", sans-serif !important;
+  font-family: "Red Hat Display", sans-serif !important;
+  color: white;
+  width: 200px;
+  height: 45px;
+  border-radius: 8px !important;
+  border-color: #3e54ac;
 }

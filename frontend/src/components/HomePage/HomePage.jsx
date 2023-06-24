@@ -8,44 +8,67 @@ import { useNavigate, useParams } from "react-router-dom";
 import { fetchRestaurants } from "../../api/UserAPI";
 
 function HomePage() {
-  const { isStudentAccount, setIsStudentAccount, setValue, allCustomers, allOwners, allReviews, allUsers, currentUserId } = useContext(Context);
+  const {
+    isStudentAccount,
+    setIsStudentAccount,
+    setValue,
+    allCustomers,
+    allOwners,
+    allReviews,
+    allUsers,
+    currentUserId,
+  } = useContext(Context);
   const navigate = useNavigate();
-  const currentStudentUser = allCustomers.find(user => user._id === currentUserId)
-  console.log(currentStudentUser)
-  setIsStudentAccount(!!currentStudentUser)
+  const currentStudentUser = allCustomers.find(
+    (user) => user._id === currentUserId
+  );
+  console.log(currentStudentUser);
+  setIsStudentAccount(!!currentStudentUser);
   return (
     <div className="home-page-container">
       <h3 className="app-logo">MunchPoints</h3>
       {isStudentAccount && currentStudentUser ? (
         <>
-          <h2 className="home-page-message">Hey {currentStudentUser.username} 👋</h2>
+          <h2 className="home-page-message">
+            Hey {currentStudentUser.username} 👋
+          </h2>
           <h3 className="home-page-your-restaurants">Your restaurants</h3>
           <div className="home-page-your-restaurants-card-carousel">
-            {currentStudentUser.subscribedRestos.map((resto) => { 
-              const restoName = allOwners.filter(r => r._id === resto.restaurantUserId)
-              
-              return <RestaurantVerticalCard 
-                  restaurantName={restoName} 
-                  points={resto.points} 
-                  backgroundColor={"#E1ECC8" }
-                  profilePicture = {resto.profilePicture}
-                  onClick={() => navigate(`/restaurantfocus/${resto.restaurantUserId}`)}
-              />
+            {currentStudentUser.subscribedRestos.map((resto) => {
+              const restoName = allOwners.filter(
+                (r) => r._id === resto.restaurantUserId
+              )[0].username;
+              console.log(restoName);
+
+              return (
+                <RestaurantVerticalCard
+                  restaurantName={restoName}
+                  points={resto.points}
+                  backgroundColor={"#E1ECC8"}
+                  profilePicture={resto.profilePicture}
+                  onClick={() =>
+                    navigate(`/restaurantfocus/${resto.restaurantUserId}`)
+                  }
+                />
+              );
             })}
           </div>
           <h3 className="home-page-discover-restaurants">
             Discover <span className="home-page-discover-emoji">👀</span>
           </h3>
           <div className="home-page-discover-restaurants-container">
-            {allOwners.map((resto) => { 
-              
-              return <RestaurantHorizontalCard 
-                  restaurantName={resto.username} 
-                  numberOfStars={4} 
+            {allOwners.map((resto) => {
+              return (
+                <RestaurantHorizontalCard
+                  restaurantName={resto.username}
+                  numberOfStars={4}
                   backgroundColor={"#E1ECC8"}
                   profilePicture = {resto.profilePicture}
-                  onClick={() => navigate(`/restaurantfocus/${resto._id}`)}
-            />
+                  onClick={() =>
+                    navigate(`/restaurantfocus/${resto.restaurantUserId}`)
+                  }
+                />
+              );
             })}
           </div>
         </>
