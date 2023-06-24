@@ -7,7 +7,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 function SignUpPage() {
-  const { isStudentAccount, setIsStudentAccount, setUser, currentUserId, setCurrentUserId } = useContext(Context);
+  const { isStudentAccount, setIsStudentAccount, setUser, setIsLoggedIn, setCurrentUserId } = useContext(Context);
   const navigate = useNavigate()
   const [signUpData, setSignUpData] = useState({
     email: '', username: '', password : '', isStudent: true, profilePicture: ''
@@ -25,6 +25,7 @@ function SignUpPage() {
     const newUser = res.data.result
     setUser(newUser)
     setCurrentUserId(newUser._id)
+    setIsLoggedIn(true)
     navigate(`/`)
   }
 
