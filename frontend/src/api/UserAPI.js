@@ -8,3 +8,4 @@ export const fetchReviews = () => API.get("/review/reviews");
 export const addSubscription = (newSubscription) =>
   API.post("/customer/subscribe", newSubscription);
 export const addNewReview = (newReview) => API.post("/review/post", newReview);
+export const modifyPoints = (customerId, ownerId, points) => API.post("/owner/points", {customerId, ownerId, points})
