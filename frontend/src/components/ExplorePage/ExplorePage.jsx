@@ -9,7 +9,6 @@ function ExplorePage() {
   const getAllRestaurants = async () => {
     const res = await fetchRestaurants()
       .then((res) => {
-        console.log(res);
         setAllRestaurants(res.data);
         return res;
       })
