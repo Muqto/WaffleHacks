@@ -7,6 +7,7 @@ interface IRestaurantVerticalCardProps {
   restaurantName: string;
   points: number;
   backgroundColor?: string;
+  profilePicture: string;
   onClick?: () => void;
 }
 function RestaurantVerticalCard(props: IRestaurantVerticalCardProps) {
@@ -16,7 +17,7 @@ function RestaurantVerticalCard(props: IRestaurantVerticalCardProps) {
       style={{ backgroundColor: props.backgroundColor }}
       onClick={props.onClick}
     >
-      <Avatar className="restaurant-vertical-card-restaurant-icon" />
+      <Avatar src = {props.profilePicture} className="restaurant-vertical-card-restaurant-icon" />
       <IconButton size="small" className="subscribed-restaurant-icon-button">
         <CheckCircleIcon className="subscribed-restaurant-icon" />
       </IconButton>

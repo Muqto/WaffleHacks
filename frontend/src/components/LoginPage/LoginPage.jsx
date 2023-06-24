@@ -16,7 +16,6 @@ function LoginPage() {
     const user = allUsers.find(user => user.username === loginData.username)
     const endpoint = user.isStudent ? 'customer/login' : 'owner/login'
     const body = {...loginData}
-    console.log(loginData, endpoint)
     const res = await axios.post(`http://localhost:6006/${endpoint}`, body)
     const newUser = res.data.result
     setUser(newUser)

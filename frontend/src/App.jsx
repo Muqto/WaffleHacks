@@ -9,7 +9,13 @@ import BarcodePopup from "./components/BarcodePopup/BarcodePopup";
 import BarcodeScanner from "./components/BarcodeScanner/BarcodeScanner";
 import PostScanPage from "./components/BarcodeScanner/PostScanPage/PostScanPage";
 import { Context } from "./context/context";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import ExplorePage from "./components/ExplorePage/ExplorePage";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import RestaurantFocusPage from "./components/RestaurantFocusPage/RestaurantFocusPage";
@@ -27,7 +33,7 @@ function App() {
     profilePicture: "",
     isStudent: true,
   });
-  // FOR TESTING I HAVE HARD CODED THE BARCODE
+  const [locationChange, setLocationChanged] = useState(false);
   const [barcode, setBarcode] = useState("64971f7d5846536b6831b2a8");
 
   const [currentUserId, setCurrentUserId] = useState(0);
@@ -38,7 +44,7 @@ function App() {
 
   useEffect(() => {
     fetchAllData();
-  }, []);
+  }, [locationChange]);
 
   const fetchAllData = async () => {
     const restoRes = await axios.get("http://localhost:6006/owner/restaurants");
@@ -73,8 +79,6 @@ function App() {
             setAllUsers,
             currentUserId,
             setCurrentUserId,
-            barcode,
-            setBarcode,
           }}
         >
           <Routes>
