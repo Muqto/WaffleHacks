@@ -18,15 +18,20 @@ import axios from "axios";
 function App() {
   const [slide, setSlide] = useState("");
   const [isStudentAccount, setIsStudentAccount] = useState(true);
-  const [allCustomers, setAllCustomers] = useState();
-  const [allOwners, setAllOwners] = useState();
+  const [allCustomers, setAllCustomers] = useState([]);
+  const [allOwners, setAllOwners] = useState([]);
+  const [allUsers, setAllUsers] = useState([])
+  
   const [allReviews, setAllReviews] = useState();
   const [user, setUser] = useState(
     {username: '', 
     profilePicture: '', 
     isStudent: true}
     )
-  
+    useEffect(() => {
+      setAllUsers([...allCustomers, ...allOwners])
+    }, [allOwners, allCustomers])
+
     useEffect(() => {
       fetchAllData()
     }, [])
@@ -49,7 +54,7 @@ function App() {
           value={{
             slide, setSlide, isStudentAccount, setIsStudentAccount,
             value, setValue, user, setUser, allCustomers, allOwners,
-            allReviews
+            allReviews, allUsers, setAllUsers
           }}
         >
           <Routes>
@@ -63,7 +68,7 @@ function App() {
             <Route exact path="/profile" element={<ProfilePage />} />
             <Route
               exact
-              path="/restaurantfocus"
+              path="/restaurantfocus/:id"
               element={<RestaurantFocusPage />}
             />
             {/* <IntroPage /> */}
@@ -78,7 +83,8 @@ function App() {
         </Context.Provider>
       </Router>
     </div>
-  );
+  )
+        
 }
 
 export default App;

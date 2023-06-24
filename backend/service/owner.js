@@ -5,9 +5,9 @@ import { Owner } from '../models/owner.js';
 import { Customer } from '../models/customer.js';
 
 export const ownerLogin = async (req, res) => {
-    const {email, password} = req.body;
+    const {username, password} = req.body;
     try {
-        const existingUser = await Owner.findOne({email})
+        const existingUser = await Owner.findOne({username})
 
         if(!existingUser) return res.status(404).json({message: 'Sorry, we could not find your account.'})
 
@@ -23,17 +23,15 @@ export const ownerLogin = async (req, res) => {
     }
 }
 export const ownerSignup = async (req, res) => {
-    const {email, username, password, confirmPassword, isStudent, profilePicture} = req.body
+    const {email, username, password, profilePicture} = req.body
     try {
         const existingUser = await Owner.findOne({email})
 
         if (existingUser) return res.status(400).json({message:'User already exists'})
 
-        if(password !== confirmPassword) return res.status(400).json({message: "Passwords don't match"})
-
         const hashedPassword = await bcrypt.hash(password, 12)
 
-        const result = await Owner.create({email, username, password: hashedPassword, isStudent, profilePicture})
+        const result = await Owner.create({email, username, password: hashedPassword, isStudent : false, profilePicture})
 
         const token = jwt.sign({email: result.email, id: result._id}, 'test', {expiresIn: '1h'})
 
