@@ -1,7 +1,7 @@
 .home-page-container {
   margin: 0;
   width: 100vw;
-  height: 100vh;
+  max-height: 100vh;
   background-color: #fcfdff;
   font-family: "Inter", sans-serif;
   font-family: "Red Hat Display", sans-serif;
@@ -10,37 +10,54 @@
 
 .app-logo {
   margin: 0;
-  padding-top: 2vh;
+  margin-top: 2vh;
 }
 
 .home-page-message {
-  position: absolute;
-  left: 7vw;
-  top: 10vh;
+  position: relative;
+  right: 26vw;
+  top: 3vh;
 }
 
 .home-page-your-restaurants {
-  position: absolute;
-  left: 7vw;
-  top: 20vh;
+  position: relative;
+  right: 25vw;
+  top: 7vh;
 }
 
 .home-page-your-restaurants-card-carousel {
   display: flex;
   justify-content: space-evenly;
-  overflow: auto;
+  overflow-x: auto;
   position: relative;
-  left: 7vw;
-  top: 27vh;
+  left: 5vw;
+  top: 8vh;
   width: 80vw;
 }
 
+.home-page-your-restaurants-card-carousel
+  > .restaurant-vertical-card-container {
+  margin: 0 10px;
+}
+
 .home-page-discover-restaurants {
-  position: absolute;
-  left: 7vw;
-  top: 50vh;
+  position: relative;
+  right: 28vw;
+  top: 13vh;
 }
 
 .home-page-discover-emoji {
   margin-left: 5px;
+}
+
+.home-page-discover-restaurants-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow-y: auto;
+  position: relative;
+  left: 9vw;
+  top: 14vh;
+  width: 80vw;
+  height: 30vh;
 }
