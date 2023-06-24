@@ -16,7 +16,7 @@
 
 .home-page-message {
   position: relative;
-  right: 26vw;
+  right: 19vw;
   top: 5vh;
 }
 
@@ -28,7 +28,7 @@
 
 .home-page-your-restaurants-card-carousel {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   overflow-x: auto;
   position: relative;
   left: 5vw;
