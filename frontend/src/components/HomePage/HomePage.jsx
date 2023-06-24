@@ -8,10 +8,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { fetchRestaurants } from "../../api/UserAPI";
 
 function HomePage() {
-  const { isStudentAccount, setIsStudentAccount, setValue, allCustomers, allOwners, allReviews, allUsers } = useContext(Context);
-  const { userId } = useParams()
+  const { isStudentAccount, setIsStudentAccount, setValue, allCustomers, allOwners, allReviews, allUsers, currentUserId } = useContext(Context);
   const navigate = useNavigate();
-  const currentStudentUser = allCustomers.find(user => user._id === userId)
+  const currentStudentUser = allCustomers.find(user => user._id === currentUserId)
   console.log(currentStudentUser)
   setIsStudentAccount(!!currentStudentUser)
   return (
@@ -58,11 +57,9 @@ function HomePage() {
             Discover <span className="home-page-discover-emoji">👀</span>
           </h3>
           <div className="home-page-discover-restaurants-container">
-            {currentStudentUser.subscribedRestos.map((resto) => { 
-              const restoName = allOwners.filter(r => r._id === resto.restaurantUserId)
-              
+            {allOwners.map((resto) => { 
               return <RestaurantHorizontalCard 
-                  restaurantName={restoName} 
+                  restaurantName={resto.username} 
                   numberOfStars={4} 
                   backgroundColor={"#E1ECC8"}
                   onClick={() => navigate(`/restaurantfocus/${resto.restaurantUserId}`)}
