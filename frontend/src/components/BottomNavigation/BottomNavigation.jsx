@@ -13,8 +13,7 @@ import { Link } from "react-router-dom";
 
 function BottomNavigation() {
   const [value, setValue] = React.useState(0);
-  const [isStudentAccount, setIsStudentAccount] = useState(true);
-  const { slide, setSlide } = useContext(Context);
+  const { slide, setSlide, isStudentAccount } = useContext(Context);
   return (
     <div className="bottom-navigation-container">
       {isStudentAccount ? (

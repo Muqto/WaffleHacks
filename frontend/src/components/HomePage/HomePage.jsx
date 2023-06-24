@@ -1,11 +1,14 @@
 import { BottomNavigation, Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import RestaurantHorizontalCard from "../RestaurantHorizontalCard/RestaurantHorizontalCard";
 import RestaurantVerticalCard from "../RestaurantVerticalCard/RestaurantVerticalCard";
+import { Context } from "../../context/context";
 import "./HomePage.css";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
-  const [isStudentAccount, setIsStudentAccount] = useState(true);
+  const { isStudentAccount } = useContext(Context);
+  const navigate = useNavigate();
   return (
     <div className="home-page-container">
       <h3 className="app-logo">MunchPoints</h3>
@@ -14,7 +17,13 @@ function HomePage() {
           <h2 className="home-page-message">Hey John 👋</h2>
           <h3 className="home-page-your-restaurants">Your restaurants</h3>
           <div className="home-page-your-restaurants-card-carousel">
-            <RestaurantVerticalCard restaurantName="McDucknalds" points={95} />
+            <RestaurantVerticalCard
+              restaurantName="McDucknalds"
+              points={95}
+              onClick={() =>
+                navigate(`/restaurantfocus?restaurantName=${"McDucknalds"}`)
+              }
+            />
             <RestaurantVerticalCard
               restaurantName="noodles"
               points={30}
@@ -34,7 +43,11 @@ function HomePage() {
             Discover <span className="home-page-discover-emoji">👀</span>
           </h3>
           <div className="home-page-discover-restaurants-container">
-            <RestaurantHorizontalCard restaurantName="A" numberOfStars={4} />
+            <RestaurantHorizontalCard
+              restaurantName="A"
+              numberOfStars={4}
+              onClick={() => navigate(`/restaurantfocus?restaurantName=${"A"}`)}
+            />
             <RestaurantHorizontalCard
               restaurantName="B"
               numberOfStars={5}

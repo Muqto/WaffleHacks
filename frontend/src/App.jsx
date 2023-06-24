@@ -12,13 +12,17 @@ import { Context } from "./context/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ExplorePage from "./components/ExplorePage/ExplorePage";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
+import RestaurantFocusPage from "./components/RestaurantFocusPage/RestaurantFocusPage";
 
 function App() {
   const [slide, setSlide] = useState("");
+  const [isStudentAccount, setIsStudentAccount] = useState(true);
   return (
     <div className="App">
       <Router>
-        <Context.Provider value={{ slide, setSlide }}>
+        <Context.Provider
+          value={{ slide, setSlide, isStudentAccount, setIsStudentAccount }}
+        >
           <Routes>
             <Route exact path="/" element={<HomePage />} />
             <Route exact path="/signup" element={<SignUpPage />} />
@@ -28,6 +32,11 @@ function App() {
             <Route exact path="/postscan" element={<PostScanPage />} />
             <Route exact path="/explore" element={<ExplorePage />} />
             <Route exact path="/profile" element={<ProfilePage />} />
+            <Route
+              exact
+              path="/restaurantfocus"
+              element={<RestaurantFocusPage />}
+            />
             {/* <IntroPage /> */}
             {/* <LoginPage /> */}
             {/* <SignUpPage /> */}

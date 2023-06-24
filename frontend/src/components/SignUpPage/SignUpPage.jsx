@@ -1,14 +1,13 @@
 import { Button, TextField } from "@mui/material";
 import "./SignUpPage.css";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
+import { Context } from "../../context/context";
 
 function SignUpPage() {
-  const [isStudentAccount, setIsStudentAccount] = useState(true);
+  const { isStudentAccount, setIsStudentAccount } = useContext(Context);
   const changeAccountType = () => {
     setIsStudentAccount(!isStudentAccount);
   };
-  const [profilePicture, setProfilePicture] = useState("");
-  const profilePictureInput = useRef<any>(null);
   return (
     <div className="signup-page-container">
       <h1 className="signup-page-message">Create Your Account</h1>
