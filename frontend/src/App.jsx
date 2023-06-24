@@ -33,7 +33,6 @@ function App() {
     profilePicture: "",
     isStudent: true,
   });
-  const [locationChange, setLocationChanged] = useState(false);
   const [barcode, setBarcode] = useState("64971f7d5846536b6831b2a8");
 
   const [currentUserId, setCurrentUserId] = useState(0);
@@ -44,7 +43,7 @@ function App() {
 
   useEffect(() => {
     fetchAllData();
-  }, [locationChange]);
+  }, []);
 
   const fetchAllData = async () => {
     const restoRes = await axios.get("http://localhost:6006/owner/restaurants");
@@ -81,7 +80,7 @@ function App() {
             setCurrentUserId,
             barcode,
             setBarcode,
-            setLocationChanged,
+            setAllCustomers
           }}
         >
           <Routes>
