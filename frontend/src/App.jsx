@@ -17,7 +17,7 @@ import axios from "axios";
 
 function App() {
   const [slide, setSlide] = useState("");
-  const [isStudentAccount, setIsStudentAccount] = useState(true);
+  const [isStudentAccount, setIsStudentAccount] = useState(false);
   const [allCustomers, setAllCustomers] = useState([]);
   const [allOwners, setAllOwners] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
@@ -78,6 +78,7 @@ function App() {
             <Route exact path="/postscan" element={<PostScanPage />} />
             <Route exact path="/explore" element={<ExplorePage />} />
             <Route exact path="/profile" element={<ProfilePage />} />
+            <Route exact path="/postscanpage" element={<PostScanPage />} />
             <Route
               exact
               path="/restaurantfocus/:id"

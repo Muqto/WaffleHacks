@@ -4,15 +4,21 @@ import Barcode from "react-jsbarcode";
 import { useContext, useState } from "react";
 import { Context } from "../../context/context";
 import { useZxing } from "react-zxing";
+import { useNavigate } from "react-router-dom";
 
 const BarcodePopup = () => {
   const { slide, isStudentAccount } = useContext(Context);
+  const navigate = useNavigate();
   const [barcode, setBarcode] = useState("barcode");
   const { ref } = useZxing({
     onResult(result) {
       setBarcode(result.getText());
     },
   });
+
+  const handleBarcodeConfirmation = () => {
+    navigate("/postscanpage");
+  };
   return (
     <div className="barcode-popup-container">
       <Paper elevation={20} className={`barcode-popup-paper ${slide}`}>
@@ -26,6 +32,13 @@ const BarcodePopup = () => {
             <video ref={ref} />
             <h3>Barcode:</h3>
             <p>{barcode}</p>
+            <Button
+              onClick={handleBarcodeConfirmation}
+              className="barcode-confirm-button"
+              variant="contained"
+            >
+              Confirm Barcode
+            </Button>
           </div>
         )}
       </Paper>
