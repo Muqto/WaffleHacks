@@ -5,7 +5,7 @@ import RestaurantVerticalCard from "../RestaurantVerticalCard/RestaurantVertical
 import "./HomePage.css";
 
 function HomePage() {
-  const [isStudentAccount, setIsStudentAccount] = useState(false);
+  const [isStudentAccount, setIsStudentAccount] = useState(true);
   return (
     <div className="home-page-container">
       <h3 className="app-logo">MunchPoints</h3>

@@ -24,7 +24,8 @@
 }
 
 .restaurant-vertical-card-restaurant-name {
-  margin-top: 0;
+  margin-top: 10px;
+  margin-bottom: 0;
 }
 
 .restaurant-horizontal-card-more-info-icon-button {
