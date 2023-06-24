@@ -23,9 +23,15 @@
   align-items: flex-start;
 }
 
-.restaurant-vertical-card-restaurant-name {
-  margin-top: 10px;
-  margin-bottom: 0;
+.restaurant-horizontal-card-restaurant-name {
+  font-weight: 500;
+  position: absolute;
+  top: 0px;
+}
+
+.restaurant-horizontal-card-stars {
+  position: absolute;
+  top: 45px;
 }
 
 .restaurant-horizontal-card-more-info-icon-button {
