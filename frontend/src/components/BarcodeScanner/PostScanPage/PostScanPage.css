@@ -35,7 +35,7 @@
 }
 
 .post-scan-page-button1 {
-  margin-left: 40px;
+  margin-left: 40px !important;
   text-transform: none !important;
   background-color: #3e54ac !important;
   font-size: 20px !important;
@@ -51,8 +51,8 @@
 }
 
 .post-scan-page-button2 {
-  margin-right: 40px;
-  margin-left: 30px;
+  margin-right: 40px !important;
+  margin-left: 30px !important;
   text-transform: none !important;
   background-color: #3e54ac !important;
   font-size: 20px !important;
