@@ -9,7 +9,8 @@ import {
   Rating,
   TextField,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { Context } from "../../context/context";
 import ReviewCard from "../ReviewCard/ReviewCard";
 import "./RestaurantFocusPage.css";
 import EditIcon from "@mui/icons-material/Edit";
@@ -17,15 +18,23 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import {
+  fetchReviews,
+  fetchRestaurants,
+  addSubscription,
+  addNewReview,
+} from "../../api/UserAPI";
 
-export interface IRestaurantFocusPage {}
-function RestaurantFocusPage(props: IRestaurantFocusPage) {
+function RestaurantFocusPage() {
+  const { isStudentAccount, setValue, user } = useContext(Context);
   const [open, setOpen] = useState(false);
   const handleClose = () => {
+    setReviewStars(0);
     setOpen(false);
   };
   const handleSubmission = () => {
     setOpen(false);
+    postNewReview();
   };
   const handleClick = () => {
     setOpen(true);
@@ -34,15 +43,77 @@ function RestaurantFocusPage(props: IRestaurantFocusPage) {
   // get restaurant name from url
   const [searchParams, setSearchParams] = useSearchParams();
   const [gotRestaurantName, setGotRestaurantName] = useState(false);
+  const [gotCurrentRestaurant, setGotCurrentRestaurant] = useState(false);
   const [restaurantName, setRestaurantName] = useState("");
   useEffect(() => {
-    setRestaurantName(searchParams.get("restaurantName") as string);
+    setRestaurantName(searchParams.get("restaurantName"));
     setGotRestaurantName(true);
   }, []);
 
+  // get restaurant id from name
+  const [currentRestaurant, setCurrentRestaurant] = useState();
+  const getCurrentRestaurant = async () => {
+    const res = await fetchRestaurants()
+      .then((res) => {
+        setCurrentRestaurant(
+          res.data.filter(
+            (restaurant) => restaurant.username === restaurantName
+          )
+        );
+        setGotCurrentRestaurant(true);
+        return res;
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    getCurrentRestaurant();
+  }, [gotRestaurantName]);
+
+  // get all reviews
+  const [restaurantReviews, setRestaurantReviews] = useState();
+  const getAllRestaurantReviews = async () => {
+    const res = await fetchReviews()
+      .then((res) => {
+        setRestaurantReviews(
+          res.data.filter(
+            (review) => review.restaurantId === currentRestaurant[0]?._id
+          )
+        );
+        return res;
+      })
+      .catch((error) => console.log(error));
+  };
+  useEffect(() => {
+    getAllRestaurantReviews();
+  }, [currentRestaurant]);
+
+  // add restaurant to subscription (student accounts)
+  const handleSubscriptionAddition = async () => {
+    // TO DO WHEN WE GET USER ID
+    // const res = await addSubscription({
+    //   customerId: "",
+    //   ownerId: currentRestaurant[0]._id,
+    // });
+  };
+
+  const [reviewText, setReviewText] = useState("");
+  const [reviewStars, setReviewStars] = useState();
+  // post a review
+  const postNewReview = async () => {
+    //TO DO WHEN WE GET USER ID
+    // get user id from global username (from context)
+    const res = await addNewReview({
+      reviewerId: "649633412950953cec504302", // USER ID
+      restaurantId: currentRestaurant[0]._id,
+      reviewText: reviewText,
+      stars: reviewStars,
+    });
+  };
+
   const navigate = useNavigate();
   const handleReturn = () => {
-    navigate("/");
+    navigate(-1);
   };
 
   return (
@@ -57,27 +128,30 @@ function RestaurantFocusPage(props: IRestaurantFocusPage) {
           </IconButton>
           <div className="restaurant-focus-page-image"></div>
           <div className="restaurant-focus-page-info-panel">
-            <IconButton className="restaurant-focus-page-add-icon-button">
+            <IconButton
+              onClick={handleSubscriptionAddition}
+              className="restaurant-focus-page-add-icon-button"
+            >
               <AddCircleIcon className="restaurant-focus-page-add-icon" />
             </IconButton>
             <h1 className="restaurant-focus-page-restaurant-name">
               {restaurantName}
             </h1>
-            <ReviewCard
-              reviewer="Jane Doe"
-              review='"very good food"'
-              numberOfStars={4}
-            />
-            <ReviewCard
-              reviewer="Jane Doe"
-              review='"very good food"'
-              numberOfStars={4}
-            />
-            <ReviewCard
-              reviewer="Jane Doe"
-              review='"very good food"'
-              numberOfStars={4}
-            />
+            {restaurantReviews ? (
+              restaurantReviews
+                .slice(0, 3)
+                .map((review) => (
+                  <ReviewCard
+                    reviewer={review.reviewerId}
+                    review={`"${review.reviewText}"`}
+                    numberOfStars={review.stars}
+                  />
+                ))
+            ) : (
+              <div className="restaurant-focus-page-progress-container">
+                <CircularProgress />
+              </div>
+            )}
             ...
             <Button
               className="restaurant-focus-page-review-button"
@@ -104,9 +178,10 @@ function RestaurantFocusPage(props: IRestaurantFocusPage) {
                   type="text"
                   variant="standard"
                   multiline
+                  onChange={(e) => setReviewText(e.target.value)}
                 />
                 <DialogContent>
-                  <Rating />
+                  <Rating onChange={(e) => setReviewStars(e.target.value)} />
                 </DialogContent>
                 <Button
                   onClick={handleSubmission}

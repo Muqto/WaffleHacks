@@ -7,6 +7,9 @@
   font-family: "Inter", sans-serif;
   font-family: "Red Hat Display", sans-serif;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .app-logo {
@@ -27,11 +30,11 @@
 .explore-page-discover-restaurants-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   overflow-y: auto;
   position: relative;
   left: 5vw;
-  top: 8vh;
+  top: 0vh;
   width: 90vw;
   height: 65vh;
 }
