@@ -1,8 +1,9 @@
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import React from "react";
 import ReviewCard from "../ReviewCard/ReviewCard";
 import "./RestaurantFocusPage.css";
 import EditIcon from "@mui/icons-material/Edit";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 export interface IRestaurantFocusPage {
   restaurantName: string;
@@ -10,6 +11,9 @@ export interface IRestaurantFocusPage {
 function RestaurantFocusPage(props: IRestaurantFocusPage) {
   return (
     <div className="restaurant-focus-page-container">
+      <IconButton className="restaurant-focus-page-return-arrow">
+        <ArrowBackIosIcon className="restaurant-focus-page-return-arrow-icon"/>
+      </IconButton>
       <div className="restaurant-focus-page-image"></div>
       <div className="restaurant-focus-page-info-panel">
         <h1 className="restaurant-focus-page-restaurant-name">

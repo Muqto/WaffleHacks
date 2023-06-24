@@ -21,8 +21,9 @@ function App() {
       {/* <BarcodePopup/> */}
       {/* <BarcodeScanner/> */}
       {/* <ExplorePage /> */}
-      <PostScanPage/>
-      {/* <BottomNavigation /> */}
+      {/* <PostScanPage/> */}
+      <RestaurantFocusPage restaurantName="McDeez" />
+      <BottomNavigation />
     </div>
   );
 }

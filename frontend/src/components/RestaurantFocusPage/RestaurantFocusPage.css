@@ -8,8 +8,14 @@
   position: relative;
 }
 
-.restaurant-focus-page-image {
+.restaurant-focus-page-return-arrow {
+  position: absolute !important;
+  top: 20px;
+  left: 25px;
+}
 
+.restaurant-focus-page-return-arrow-icon {
+  fill: #3e54ac !important;
 }
 
 .restaurant-focus-page-info-panel {
