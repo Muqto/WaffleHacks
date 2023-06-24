@@ -84,3 +84,12 @@
 .restaurant-focus-page-circular-progress span {
   color: #3e54ac !important;
 }
+
+.restaurant-focus-page-progress-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

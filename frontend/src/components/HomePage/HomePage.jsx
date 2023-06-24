@@ -1,15 +1,14 @@
 import { BottomNavigation, Button } from "@mui/material";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import RestaurantHorizontalCard from "../RestaurantHorizontalCard/RestaurantHorizontalCard";
 import RestaurantVerticalCard from "../RestaurantVerticalCard/RestaurantVerticalCard";
 import { Context } from "../../context/context";
 import "./HomePage.css";
 import { useNavigate, useParams } from "react-router-dom";
+import { fetchRestaurants } from "../../api/UserAPI";
 
 function HomePage() {
   const { isStudentAccount, setIsStudentAccount, setValue, allCustomers, allOwners, allReviews, allUsers } = useContext(Context);
-  
-  
   const { userId } = useParams()
   const navigate = useNavigate();
   const currentStudentUser = allCustomers.find(user => user._id === userId)
