@@ -58,19 +58,21 @@ function HomePage() {
             Discover <span className="home-page-discover-emoji">👀</span>
           </h3>
           <div className="home-page-discover-restaurants-container">
-            {allOwners.map((resto) => {
-              return (
-                <RestaurantHorizontalCard
-                  restaurantName={resto.username}
-                  numberOfStars={4}
-                  backgroundColor={"#E1ECC8"}
-                  profilePicture={resto.profilePicture}
-                  onClick={() =>
-                    navigate(`/restaurantfocus/${resto.restaurantUserId}`)
-                  }
-                />
-              );
-            })}
+            {allOwners &&
+              allOwners.map((resto) => {
+                console.log(resto);
+                return (
+                  <RestaurantHorizontalCard
+                    restaurantName={resto.username}
+                    numberOfStars={4}
+                    backgroundColor={"#E1ECC8"}
+                    profilePicture={resto.profilePicture}
+                    onClick={() =>
+                      navigate(`/restaurantfocus/${resto._id}`)
+                    }
+                  />
+                );
+              })}
           </div>
         </>
       ) : (
