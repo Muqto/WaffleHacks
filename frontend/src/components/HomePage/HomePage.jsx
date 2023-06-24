@@ -40,14 +40,14 @@ function HomePage() {
               const restaurant = allOwners.find(
                 (r) => r._id === resto.restaurantUserId
               );
-              console.log(restaurant)
+              console.log(restaurant);
               const restoName = restaurant.username;
-              const restoPic = restaurant.profilePicture  
+              const restoPic = restaurant.profilePicture;
               return (
                 <RestaurantVerticalCard
                   restaurantName={restoName}
                   points={resto.points}
-                  backgroundColor={"#E1ECC8"}
+                  backgroundColor={"#FFEBEB"}
                   profilePicture={restoPic}
                   onClick={() =>
                     navigate(`/restaurantfocus/${resto.restaurantUserId}`)
@@ -66,11 +66,9 @@ function HomePage() {
                   <RestaurantHorizontalCard
                     restaurantName={resto.username}
                     numberOfStars={4}
-                    backgroundColor={"#E1ECC8"}
+                    backgroundColor={"#ecf2ff"}
                     profilePicture={resto.profilePicture}
-                    onClick={() =>
-                      navigate(`/restaurantfocus/${resto._id}`)
-                    }
+                    onClick={() => navigate(`/restaurantfocus/${resto._id}`)}
                   />
                 );
               })}

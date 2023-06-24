@@ -15,15 +15,15 @@
 }
 
 .home-page-message {
-  position: relative;
-  right: 19vw;
-  top: 5vh;
+  position: absolute;
+  left: 7vw;
+  top: 8vh;
 }
 
 .home-page-your-restaurants {
   position: relative;
   right: 25vw;
-  top: 7vh;
+  top: 11vh;
 }
 
 .home-page-your-restaurants-card-carousel {
@@ -32,8 +32,9 @@
   overflow-x: auto;
   position: relative;
   left: 5vw;
-  top: 8vh;
+  top: 12vh;
   width: 80vw;
+  border-radius: 10px;
 }
 
 .home-page-your-restaurants-card-carousel
@@ -54,13 +55,14 @@
 .home-page-discover-restaurants-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   overflow-y: auto;
   position: relative;
   left: 8vw;
-  top: 14vh;
+  top: 13vh;
   width: 80vw;
-  height: 30vh;
+  height: 38vh;
+  border-radius: 10px;
 }
 
 .home-page-owner-message {
