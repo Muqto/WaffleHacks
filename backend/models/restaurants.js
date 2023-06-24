@@ -1,15 +1,13 @@
 import mongoose from "mongoose";
 
-const restaurantSchema = new mongoose.Schema({
+export const restaurantSchema = new mongoose.Schema({
     restaurantUserId: {
         type: String,
         required: true
     },
     points: {
         type: Number,
-        required: true
+        default: 0
     }
     
 })
-
-export const Restaurant = mongoose.model("Restaurant", restaurantSchema)
