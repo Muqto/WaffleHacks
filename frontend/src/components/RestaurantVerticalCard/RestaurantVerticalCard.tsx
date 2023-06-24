@@ -6,10 +6,14 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 interface IRestaurantVerticalCardProps {
   restaurantName: string;
   points: number;
+  backgroundColor?: string;
 }
 function RestaurantVerticalCard(props: IRestaurantVerticalCardProps) {
   return (
-    <div className="restaurant-vertical-card-container">
+    <div
+      className="restaurant-vertical-card-container"
+      style={{ backgroundColor: props.backgroundColor }}
+    >
       <Avatar className="restaurant-vertical-card-restaurant-icon" />
       <IconButton size="small" className="subscribed-restaurant-icon-button">
         <CheckCircleIcon className="subscribed-restaurant-icon" />

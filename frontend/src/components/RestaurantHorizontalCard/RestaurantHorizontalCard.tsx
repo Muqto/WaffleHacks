@@ -6,10 +6,14 @@ import React from "react";
 interface IRestaurantHorizontalCardProps {
   restaurantName: string;
   numberOfStars: number;
+  backgroundColor?: string;
 }
 function RestaurantHorizontalCard(props: IRestaurantHorizontalCardProps) {
   return (
-    <div className="restaurant-horizontal-card-container">
+    <div
+      className="restaurant-horizontal-card-container"
+      style={{ backgroundColor: props.backgroundColor }}
+    >
       <Avatar className="restaurant-horizontal-card-restaurant-icon" />
       <div className="restaurant-horizontal-card-text-container">
         <h4 className="restaurant-vertical-card-restaurant-name">

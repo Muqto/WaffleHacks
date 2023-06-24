@@ -16,7 +16,7 @@
 .home-page-message {
   position: relative;
   right: 26vw;
-  top: 3vh;
+  top: 5vh;
 }
 
 .home-page-your-restaurants {
@@ -60,4 +60,26 @@
   top: 14vh;
   width: 80vw;
   height: 30vh;
+}
+
+.home-page-owner-message {
+  position: relative;
+  top: 20vh;
+}
+
+.home-page-scan-button {
+  margin: 50px 0 100px 0 !important;
+  text-transform: none !important;
+  background-color: #3e54ac !important;
+  font-size: 20px !important;
+  font-family: "Inter", sans-serif !important;
+  font-family: "Red Hat Display", sans-serif !important;
+  color: white;
+  width: 200px;
+  height: 65px;
+  border-radius: 8px !important;
+  border-color: #3e54ac;
+  box-shadow: 0 0 3px #3e54ac;
+  position: relative;
+  top: 20vh;
 }

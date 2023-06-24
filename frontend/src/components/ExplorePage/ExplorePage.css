@@ -1,0 +1,41 @@
+.explore-page-container {
+  margin: 0;
+  width: 100vw;
+  max-height: 100vh;
+  background-color: #fcfdff;
+  font-family: "Inter", sans-serif;
+  font-family: "Red Hat Display", sans-serif;
+  position: relative;
+}
+
+.app-logo {
+  margin: 0;
+  margin-top: 2vh;
+}
+
+.explore-page-discover-restaurants {
+  position: relative;
+  right: 28vw;
+  top: 5vh;
+}
+
+.explore-page-discover-emoji {
+  margin-left: 5px;
+}
+
+.explore-page-discover-restaurants-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow-y: auto;
+  position: relative;
+  left: 5vw;
+  top: 8vh;
+  width: 90vw;
+  height: 65vh;
+}
+
+.explore-page-discover-restaurants-container
+  > .restaurant-horizontal-card-container {
+  top: 0;
+}
