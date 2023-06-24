@@ -1,0 +1,16 @@
+/* <div className="post-scan-page-container">
+        <div className="post-scan-page-header">
+            <Avatar className="post-scan-page-avatar"/>
+        </div>
+        <div className="post-scan-page-username">
+            <Typography>Hello John</Typography>
+        </div>
+        <div className="post-scan-page-buttons">
+            <Button variant="contained">Redeem Points</Button>
+            <Button variant="contained">Add Points</Button>
+        </div>
+    </div> */
+
+.post-scan-page-container{
+    
+}
