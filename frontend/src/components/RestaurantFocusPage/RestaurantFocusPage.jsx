@@ -131,7 +131,6 @@ function RestaurantFocusPage() {
                 .slice(0, 3)
                 .map((review) => (
                   <ReviewCard
-                    reviewer={review.reviewerId}
                     review={`"${review.reviewText}"`}
                     numberOfStars={review.stars}
                   />
