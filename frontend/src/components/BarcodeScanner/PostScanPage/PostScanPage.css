@@ -14,7 +14,7 @@
 
 .post-scan-page-avatar {
   position: absolute;
-  top: 100%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%) !important;
   width: 150px !important;
@@ -31,7 +31,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 120px;
+  margin-top: 25px;
 }
 
 .post-scan-page-button1 {
@@ -68,15 +68,39 @@
 .post-scan-page-p {
   margin-left: 40px;
   margin-right: 40px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .post-scan-bottom-div {
   border-radius: 35px 35px 0 0;
   background-color: #ecf2ff;
   position: absolute;
-  bottom: 0;
+  top: 25vh;
   width: 100vw;
-  height: 65vh;
+  height: 75vh;
   z-index: 0;
+}
+
+.post-scan-page-points-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-scan-page-points-container > h2 {
+  margin-right: 70px;
+}
+
+.post-scan-page-points-container > p {
+  padding-right: 10px;
+}
+
+.post-scan-page-purchase-amount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-scan-page-purchase-amount > p {
+  margin-right: 25px;
 }

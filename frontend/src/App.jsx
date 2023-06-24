@@ -9,7 +9,13 @@ import BarcodePopup from "./components/BarcodePopup/BarcodePopup";
 import BarcodeScanner from "./components/BarcodeScanner/BarcodeScanner";
 import PostScanPage from "./components/BarcodeScanner/PostScanPage/PostScanPage";
 import { Context } from "./context/context";
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import ExplorePage from "./components/ExplorePage/ExplorePage";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import RestaurantFocusPage from "./components/RestaurantFocusPage/RestaurantFocusPage";
@@ -27,9 +33,10 @@ function App() {
     profilePicture: "",
     isStudent: true,
   });
-  const [locationChange, setLocationChanged] = useState(false)
+  const [locationChange, setLocationChanged] = useState(false);
+  const [barcode, setBarcode] = useState("64971f7d5846536b6831b2a8");
 
-  const [currentUserId, setCurrentUserId] = useState(0)
+  const [currentUserId, setCurrentUserId] = useState(0);
 
   useEffect(() => {
     setAllUsers([...allCustomers, ...allOwners]);
@@ -72,10 +79,9 @@ function App() {
             setAllUsers,
             currentUserId,
             setCurrentUserId,
+            barcode,
+            setBarcode,
             setLocationChanged,
-            locationChange,
-            setAllOwners,
-            setAllCustomers
           }}
         >
           <Routes>
