@@ -16,7 +16,7 @@ function ProfilePage() {
       <div className="profile-bottom-div">
         <h1 className="profile-page-username">{user.username}</h1>
         <div className="profile-page-logout">
-        <Button onClick={() => navigate("/login")} className="profile-page-logout-button" variant="outlined">
+        <Button onClick={() => navigate("/login")} className="profile-page-logout-button" variant="contained">
           Logout
         </Button>
       </div>
