@@ -8,9 +8,8 @@
 .intro-page-header-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   padding-top: 30vh;
-  padding-left: 10vw;
   justify-content: flex-start;
 }
 .intro-page-header {

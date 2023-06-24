@@ -6,7 +6,7 @@ function IntroPage() {
   return (
     <div className="intro-page-container">
       <div className="intro-page-header-container">
-        <h1 className="intro-page-header">Name of the App</h1>
+        <h1 className="intro-page-header">MunchPoints</h1>
         <h3 className="intro-page-subheader">
           Let's fight food insecurity <span>together</span>.
         </h3>

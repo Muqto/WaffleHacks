@@ -64,6 +64,14 @@
   align-items: center;
 }
 
+.signup-page-profile-picture {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  background-color: grey;
+}
+
 .signup-page-form-input {
   margin-top: 50px !important;
   width: 300px;

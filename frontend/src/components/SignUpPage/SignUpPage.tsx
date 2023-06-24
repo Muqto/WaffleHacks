@@ -1,12 +1,14 @@
 import { Button, TextField } from "@mui/material";
 import "./SignUpPage.css";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 function SignUpPage() {
   const [isStudentAccount, setIsStudentAccount] = useState(true);
   const changeAccountType = () => {
     setIsStudentAccount(!isStudentAccount);
   };
+  const [profilePicture, setProfilePicture] = useState("");
+  const profilePictureInput = useRef<any>(null);
   return (
     <div className="signup-page-container">
       <h1 className="signup-page-message">Create Your Account</h1>
@@ -15,11 +17,13 @@ function SignUpPage() {
         className={`toggle${isStudentAccount ? " student" : " restaurant"}`}
       >
         <div className="notch">
-          <span className="signup-toggle-choice">{isStudentAccount ? "Student" : "Restaurant"}</span>
+          <span className="signup-toggle-choice">
+            {isStudentAccount ? "Student" : "Restaurant"}
+          </span>
         </div>
       </div>
       <div className="signup-page-form-container">
-        // photo upload circle here
+        <div className="signup-page-profile-picture"></div>
         <TextField
           className="signup-page-form-input"
           required
