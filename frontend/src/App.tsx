@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import BottomNavigation from "./components/BottomNavigation/BottomNavigation";
 import ExplorePage from "./components/ExplorePage/ExplorePage";
@@ -10,20 +10,22 @@ import SignUpPage from "./components/SignUpPage/SignUpPage";
 import BarcodePopup from "./components/BarcodePopup/BarcodePopup";
 import BarcodeScanner from "./components/BarcodeScanner/BarcodeScanner";
 import PostScanPage from "./components/BarcodeScanner/PostScanPage/PostScanPage";
+import { Context } from "./context/context";
 
 function App() {
+  const [slide, setSlide] = useState("")
   return (
     <div className="App">
+      <Context.Provider value={{slide, setSlide}}>
       {/* <IntroPage /> */}
       {/* <LoginPage /> */}
       {/* <SignUpPage /> */}
       {/* <HomePage /> */}
-      {/* <BarcodePopup/> */}
+      <BarcodePopup/>
       {/* <BarcodeScanner/> */}
-      {/* <ExplorePage /> */}
       {/* <PostScanPage/> */}
-      <RestaurantFocusPage restaurantName="McDeez" />
       <BottomNavigation />
+      </Context.Provider>
     </div>
   );
 }
