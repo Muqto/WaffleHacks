@@ -9,7 +9,8 @@ import {
   Rating,
   TextField,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { Context } from "../../context/context";
 import ReviewCard from "../ReviewCard/ReviewCard";
 import "./RestaurantFocusPage.css";
 import EditIcon from "@mui/icons-material/Edit";
@@ -25,6 +26,7 @@ import {
 } from "../../api/UserAPI";
 
 function RestaurantFocusPage() {
+  const { isStudentAccount, setValue, user } = useContext(Context);
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setReviewStars(0);
@@ -100,6 +102,7 @@ function RestaurantFocusPage() {
   // post a review
   const postNewReview = async () => {
     //TO DO WHEN WE GET USER ID
+    // get user id from global username (from context)
     const res = await addNewReview({
       reviewerId: "649633412950953cec504302", // USER ID
       restaurantId: currentRestaurant[0]._id,
