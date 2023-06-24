@@ -74,7 +74,7 @@ function SignUpPage() {
         </Button>
         <h4 className="signup-page-login-prompt">
           Already have an account?{" "}
-          <span className="signup-page-login-prompt-link">Log in</span>
+          <span onClick={() => navigate("/login")} className="signup-page-login-prompt-link">Log in</span>
         </h4>
       </div>
     </div>

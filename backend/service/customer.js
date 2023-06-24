@@ -4,9 +4,9 @@ import jwt from 'jsonwebtoken'
 import { Customer } from '../models/customer.js';
 
 export const customerLogin = async (req, res) => {
-    const {email, password} = req.body;
+    const {username, password} = req.body;
     try {
-        const existingUser = await Customer.findOne({email})
+        const existingUser = await Customer.findOne({username})
 
         if(!existingUser) return res.status(404).json({message: 'Sorry, we could not find your account.'})
 
