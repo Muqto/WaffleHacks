@@ -34,8 +34,14 @@
   padding-top: 0;
 }
 
-.login-page-form-input {
+.login-page-form-input1 {
   margin-top: 50px !important;
+  width: 300px;
+  font-family: "Inter", sans-serif !important;
+  font-family: "Red Hat Display", sans-serif !important;
+}
+.login-page-form-input2 {
+  margin-top: 20px !important;
   width: 300px;
   font-family: "Inter", sans-serif !important;
   font-family: "Red Hat Display", sans-serif !important;

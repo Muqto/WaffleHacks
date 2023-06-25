@@ -32,7 +32,7 @@ function LoginPage() {
       <div className="login-page-form-container">
         <h1 className="login-page-header">Log in</h1>
         <TextField
-          className="login-page-form-input"
+          className="login-page-form-input1"
           required
           label="Username"
           onChange={(e) =>
@@ -40,7 +40,7 @@ function LoginPage() {
           }
         />
         <TextField
-          className="login-page-form-input"
+          className="login-page-form-input2"
           required
           type="password"
           label="Password"
