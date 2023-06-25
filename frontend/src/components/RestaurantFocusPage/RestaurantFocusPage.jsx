@@ -136,7 +136,7 @@ function RestaurantFocusPage() {
             <ArrowBackIosIcon className="restaurant-focus-page-return-arrow-icon" />
           </IconButton>
 
-          <Avatar className="restaurant-focus-page-avatar" />
+          <Avatar src={currentRestaurant[0]?.profilePicture} className="restaurant-focus-page-avatar" />
           <div className="restaurant-focus-page-info-panel">
             <IconButton
               onClick={handleSubscriptionAddition}
