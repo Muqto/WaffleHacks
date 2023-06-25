@@ -140,7 +140,7 @@ const PostScanPage = () => {
         </Alert>
       </Snackbar>
       <div className="post-scan-page-header">
-        <Avatar className="post-scan-page-avatar" />
+        <Avatar src={scannedUser.profilePicture} className="post-scan-page-avatar" />
       </div>
       <div className="post-scan-bottom-div">
         <h1 className="post-scan-page-username">
