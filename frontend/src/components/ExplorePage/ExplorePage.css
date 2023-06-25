@@ -9,18 +9,17 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .app-logo {
   margin: 0;
-  margin-top: 2vh;
 }
 
 .explore-page-discover-restaurants {
   position: relative;
   right: 28vw;
-  top: 5vh;
+  top: 10vh;
 }
 
 .explore-page-discover-emoji {
@@ -34,9 +33,9 @@
   overflow-y: auto;
   position: relative;
   left: 5vw;
-  top: 0vh;
+  top: 10vh;
   width: 90vw;
-  height: 65vh;
+  height: 60vh;
 }
 
 .explore-page-discover-restaurants-container
