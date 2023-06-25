@@ -2,6 +2,7 @@ import { Avatar, IconButton } from "@mui/material";
 import React from "react";
 import "./RestaurantVerticalCard.css";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CancelIcon from '@mui/icons-material/Cancel';
 
 interface IRestaurantVerticalCardProps {
   restaurantName: string;
@@ -9,24 +10,24 @@ interface IRestaurantVerticalCardProps {
   backgroundColor?: string;
   profilePicture: string;
   onClick?: () => void;
+  onUnsub?: () => void;
 }
 function RestaurantVerticalCard(props: IRestaurantVerticalCardProps) {
   return (
     <div
       className="restaurant-vertical-card-container"
       style={{ backgroundColor: props.backgroundColor }}
-      onClick={props.onClick}
     >
-      <Avatar src = {props.profilePicture} className="restaurant-vertical-card-restaurant-icon" />
+      <Avatar onClick={props.onClick} src = {props.profilePicture} className="restaurant-vertical-card-restaurant-icon" />
       <IconButton size="small" className="subscribed-restaurant-icon-button">
-        <CheckCircleIcon className="subscribed-restaurant-icon" />
+        <CancelIcon onClick = {props.onUnsub} className="subscribed-restaurant-icon" />
       </IconButton>
-      <h4 className="restaurant-vertical-card-restaurant-name">
+      <h4 onClick={props.onClick} className="restaurant-vertical-card-restaurant-name">
         {props.restaurantName}
       </h4>
-      <h1 className="restaurant-vertical-card-restaurant-points">
+      <h1 onClick={props.onClick} className="restaurant-vertical-card-restaurant-points">
         {props.points}{" "}
-        <span className="restaurant-vertical-card-restaurant-points-text">
+        <span onClick={props.onClick} className="restaurant-vertical-card-restaurant-points-text">
           points
         </span>
       </h1>

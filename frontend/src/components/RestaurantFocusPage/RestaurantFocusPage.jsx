@@ -160,14 +160,24 @@ function RestaurantFocusPage() {
             )}
             ...
             {currentStudentUser.subscribedRestos.find(resto => resto.restaurantUserId === id) ? 
-            <Button
-              className="restaurant-focus-page-review-button"
-              variant="contained"
-              startIcon={<EditIcon />}
-              onClick={handleClick}
-            >
-              Leave a Review
-            </Button> :
+            <>
+              <Button
+                className="restaurant-focus-page-review-button"
+                variant="contained"
+                startIcon={<EditIcon />}
+                onClick={handleClick}
+              >
+                Leave a Review
+              </Button>
+              <Button
+              className="restaurant-focus-page-review-button-unsubscribe"
+                variant="outlined"
+                color="error"
+                onClick={handleSubscriptionAddition}>
+                Unsubscribe
+              </Button>
+            </>
+             :
             <Button
               className="restaurant-focus-page-review-button"
               variant="contained"

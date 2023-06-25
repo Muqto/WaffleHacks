@@ -5,7 +5,7 @@ import RestaurantVerticalCard from "../RestaurantVerticalCard/RestaurantVertical
 import { Context } from "../../context/context";
 import "./HomePage.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchRestaurants } from "../../api/UserAPI";
+import { addSubscription, fetchRestaurants } from "../../api/UserAPI";
 import { setSyntheticLeadingComments } from "typescript";
 
 function HomePage() {
@@ -19,12 +19,22 @@ function HomePage() {
     allUsers,
     currentUserId,
     setSlide,
+    setAllCustomers
   } = useContext(Context);
   const navigate = useNavigate();
+
   const currentStudentUser = allCustomers.find(
     (user) => user._id === currentUserId
   );
   setIsStudentAccount(!!currentStudentUser);
+  const handleSubscriptionAddition = async (restoId) => {
+    // TO DO WHEN WE GET USER ID
+    const res = await addSubscription({
+      customerId: currentUserId,
+      ownerId: restoId,
+    });
+    setAllCustomers([...allCustomers.filter(student => student._id !== currentUserId), res.data])
+  };
   return (
     <div className="home-page-container">
       <h3 className="app-logo">MunchPoints</h3>
@@ -50,6 +60,7 @@ function HomePage() {
                   onClick={() =>
                     navigate(`/restaurantfocus/${resto.restaurantUserId}`)
                   }
+                  onUnsub={() => handleSubscriptionAddition(resto.restaurantUserId)}
                 />
               );
             })}
