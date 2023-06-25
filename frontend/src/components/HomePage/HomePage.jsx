@@ -19,7 +19,7 @@ function HomePage() {
     allUsers,
     currentUserId,
     setSlide,
-    setAllCustomers
+    setAllCustomers,
   } = useContext(Context);
   const navigate = useNavigate();
 
@@ -33,7 +33,10 @@ function HomePage() {
       customerId: currentUserId,
       ownerId: restoId,
     });
-    setAllCustomers([...allCustomers.filter(student => student._id !== currentUserId), res.data])
+    setAllCustomers([
+      ...allCustomers.filter((student) => student._id !== currentUserId),
+      res.data,
+    ]);
   };
   return (
     <div className="home-page-container">
@@ -55,12 +58,14 @@ function HomePage() {
                 <RestaurantVerticalCard
                   restaurantName={restoName}
                   points={resto.points}
-                  backgroundColor={"#FFEBEB"}
+                  backgroundColor={"#ecf2ff"}
                   profilePicture={restoPic}
                   onClick={() =>
                     navigate(`/restaurantfocus/${resto.restaurantUserId}`)
                   }
-                  onUnsub={() => handleSubscriptionAddition(resto.restaurantUserId)}
+                  onUnsub={() =>
+                    handleSubscriptionAddition(resto.restaurantUserId)
+                  }
                 />
               );
             })}
