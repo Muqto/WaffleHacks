@@ -33,7 +33,7 @@ const PostScanPage = () => {
 
   const getScannedUser = () => {
     const scannedUser =
-      allCustomers && allCustomers.find((u) => u._id === barcode);
+      allCustomers && allCustomers.find((u) => u._id.slice(0, 8) === barcode);
     setScannedUser(scannedUser);
   };
 
@@ -101,7 +101,7 @@ const PostScanPage = () => {
   }, [purchaseAmount]);
 
   useEffect(() => {
-    const discountApplicable = (userPoints / 100);
+    const discountApplicable = userPoints / 100;
     setDiscountedPoints(discountApplicable);
   }, [userPoints]);
 
