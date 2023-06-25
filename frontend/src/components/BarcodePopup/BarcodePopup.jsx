@@ -8,7 +8,7 @@ import { useZxing } from "react-zxing";
 import { useNavigate } from "react-router-dom";
 
 const BarcodePopup = () => {
-  const { slide, isStudentAccount, barcode, setBarcode, user } =
+  const { slide, isStudentAccount, barcode, setBarcode, user, isLoggedIn } =
     useContext(Context);
   const navigate = useNavigate();
   const { ref } = useZxing({
@@ -27,7 +27,7 @@ const BarcodePopup = () => {
         {isStudentAccount ? (
           <ReactBarcode
             className="barcode-container"
-            value={user._id.slice(0, 8)}
+            value={isLoggedIn ? user._id.slice(0, 8) : "123456"}
             style={{ height: 250, width: 300 }}
           />
         ) : (
