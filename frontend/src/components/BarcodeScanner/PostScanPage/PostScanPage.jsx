@@ -23,50 +23,61 @@ const PostScanPage = () => {
   const [convertedPoints, setConvertedPoints] = useState(0);
   const [purchaseAmount, setPurchaseAmount] = useState();
   const [discountedPoints, setDiscountedPoints] = useState();
-  const [userPurchaseValue, setUserPurchaseValue] = useState();
+  const [scannedUser, setScannedUser] = useState();
+
+  console.log(scannedUser);
+
+  const getScannedUser = () => {
+    const scannedUser =
+      allCustomers && allCustomers.find((u) => u._id === barcode);
+    setScannedUser(scannedUser);
+  };
 
   const getUserPoints = () => {
-    const scannedUser =
-      allCustomers && allCustomers.find((user) => user._id === barcode);
     const subscribedResto =
       currentUserId &&
+      scannedUser &&
       scannedUser.subscribedRestos.find(
         (resto) => resto.restaurantUserId === currentUserId
       );
     return subscribedResto?.points ?? 0;
   };
 
+  // initialize values
   useEffect(() => {
+    getScannedUser();
     setUserPoints(getUserPoints());
   }, []);
 
   const handleDiscount = () => {
     // from barcode, get user
-    const scannedUser =
-      allCustomers && allCustomers.find((user) => user._id === barcode);
     const currentPoints = getUserPoints();
     if (currentPoints > 0) {
       // apply discount
-      const subscribedResto = scannedUser.subscribedRestos.find(
-        (resto) => resto.restaurantUserId === currentUserId
-      );
+      const subscribedResto =
+        scannedUser &&
+        scannedUser.subscribedRestos.find(
+          (resto) => resto.restaurantUserId === currentUserId
+        );
       subscribedResto.points = 0;
       setUserPoints(subscribedResto.points);
+      // update backend here with new points 
     } else {
       // no discount available message
     }
   };
 
   const handlePoints = () => {
-    // get user from barcode
-    const scannedUser =
-      allCustomers && allCustomers.find((user) => user._id === barcode);
-
     const subscribedResto =
       currentUserId &&
+      scannedUser &&
       scannedUser.subscribedRestos.find(
         (resto) => resto.restaurantUserId === currentUserId
       );
+
+      // send points over through API
+
+      // get updated points through API 
 
     subscribedResto.points += convertedPoints;
     setUserPoints(subscribedResto.points);
@@ -88,7 +99,9 @@ const PostScanPage = () => {
         <Avatar className="post-scan-page-avatar" />
       </div>
       <div className="post-scan-bottom-div">
-        <h1 className="post-scan-page-username">John Wick</h1>
+        <h1 className="post-scan-page-username">
+          {scannedUser && scannedUser.username}
+        </h1>
 
         <div className="post-scan-page-purchase-amount">
           <p className="post-scan-page-p">Purchase: </p>{" "}
