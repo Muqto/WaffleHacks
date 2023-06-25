@@ -27,7 +27,7 @@ import {
 } from "../../api/UserAPI";
 
 function RestaurantFocusPage() {
-  const { currentUserId, allCustomers, setAllCustomers, user } = useContext(Context);
+  const { currentUserId, allCustomers, setAllCustomers, user, setUser } = useContext(Context);
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setReviewStars(0);
@@ -40,6 +40,9 @@ function RestaurantFocusPage() {
   const handleClick = () => {
     setOpen(true);
   };
+  const currentStudentUser = allCustomers.find(
+    (user) => user._id === currentUserId
+  );
 
   // get restaurant name from url
   const [gotCurrentRestaurant, setGotCurrentRestaurant] = useState(false);
@@ -95,14 +98,18 @@ function RestaurantFocusPage() {
     //TO DO WHEN WE GET USER ID
     // get user id from global username (from context)
     const res = await addNewReview({
-      reviewerId: "649633412950953cec504302", // USER ID
+      reviewerId: user._id, // USER ID
       restaurantId: id,
       reviewText: reviewText,
       stars: reviewStars,
     });
-    // if (!user.earnedReviewPoints) {
-    //   const result = await 
-    // } 
+    console.log(res.data)
+    setRestaurantReviews([...restaurantReviews, res.data.newReview])
+    if (!currentStudentUser.earnedReviewPoints) {
+      const result = await modifyPoints(user._id, id, 100)
+
+      setAllCustomers([...allCustomers.filter(student => student._id !== currentUserId), result.data])
+    } 
   };
 
   const navigate = useNavigate();
@@ -134,18 +141,25 @@ function RestaurantFocusPage() {
             {restaurantReviews ? (
               restaurantReviews
                 .slice(0, 3)
-                .map((review) => (
-                  <ReviewCard
+                .map((review) => {
+                  const reviewerUser = allCustomers.find(cus => cus._id === review.reviewerId)
+                  console.log(reviewerUser)
+                  const reviewerProfilePicture = reviewerUser.profilePicture
+                  const reviewerName = reviewerUser.username
+                  return <ReviewCard
                     review={`"${review.reviewText}"`}
                     numberOfStars={review.stars}
+                    profilePicture={reviewerProfilePicture}
+                    reviewer={reviewerName}
                   />
-                ))
+              })
             ) : (
               <div className="restaurant-focus-page-progress-container">
                 <CircularProgress />
               </div>
             )}
             ...
+            {currentStudentUser.subscribedRestos.find(resto => resto.restaurantUserId === id) ? 
             <Button
               className="restaurant-focus-page-review-button"
               variant="contained"
@@ -153,7 +167,15 @@ function RestaurantFocusPage() {
               onClick={handleClick}
             >
               Leave a Review
+            </Button> :
+            <Button
+              className="restaurant-focus-page-review-button"
+              variant="contained"
+              onClick={handleSubscriptionAddition}
+            >
+              Subscribe
             </Button>
+            }
             <Dialog
               style={{ borderRadius: "30px !important" }}
               fullWidth

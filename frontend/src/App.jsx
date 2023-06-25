@@ -13,8 +13,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useNavigate,
-  useLocation,
 } from "react-router-dom";
 import ExplorePage from "./components/ExplorePage/ExplorePage";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
@@ -29,6 +27,7 @@ function App() {
   const [allUsers, setAllUsers] = useState([]);
   const [allReviews, setAllReviews] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
   const [user, setUser] = useState({
     username: "",
     profilePicture: "",

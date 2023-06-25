@@ -1,16 +1,18 @@
 import { Avatar } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import "./ReviewCard.css";
+import { Context } from "../../context/context";
 
 interface IReviewCardProps {
   reviewer?: string;
   review?: string;
   numberOfStars: number;
+  profilePicture: string;
 }
 function ReviewCard(props: IReviewCardProps) {
   return (
     <div className="review-card-container">
-      <Avatar className="review-card-reviewer-avatar" />
+      <Avatar src={props.profilePicture} className="review-card-reviewer-avatar" />
       <div className="review-card-review-text">
         <div className="review-card-reviewer">{props.reviewer}</div>
         <div className="review-card-review">{props.review}</div>

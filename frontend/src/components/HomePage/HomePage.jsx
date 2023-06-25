@@ -24,7 +24,6 @@ function HomePage() {
   const currentStudentUser = allCustomers.find(
     (user) => user._id === currentUserId
   );
-  console.log(currentStudentUser);
   setIsStudentAccount(!!currentStudentUser);
   return (
     <div className="home-page-container">
@@ -40,7 +39,6 @@ function HomePage() {
               const restaurant = allOwners.find(
                 (r) => r._id === resto.restaurantUserId
               );
-              console.log(restaurant);
               const restoName = restaurant.username;
               const restoPic = restaurant.profilePicture;
               return (
