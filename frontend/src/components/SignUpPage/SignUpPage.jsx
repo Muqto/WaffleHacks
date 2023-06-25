@@ -7,7 +7,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 function SignUpPage() {
-  const { isStudentAccount, setIsStudentAccount, setUser, setIsLoggedIn, setCurrentUserId } = useContext(Context);
+  const { isStudentAccount, setIsStudentAccount, setUser, setIsLoggedIn, setCurrentUserId, allCustomers, allOwners } = useContext(Context);
   const navigate = useNavigate()
   const [signUpData, setSignUpData] = useState({
     email: '', username: '', password : '', isStudent: true, profilePicture: ''
@@ -19,10 +19,12 @@ function SignUpPage() {
   };
 
   const signUpClick = async () => {
+    console.log(isStudentAccount)
     const endpoint = isStudentAccount ? 'customer/signup' : 'owner/signup'
     const body = {...signUpData, isStudent: isStudentAccount}
     const res = await axios.post(`http://localhost:6006/${endpoint}`, body)
     const newUser = res.data.result
+    isStudentAccount ? allCustomers.push(newUser) : allOwners.push(newUser)
     setUser(newUser)
     setCurrentUserId(newUser._id)
     setIsLoggedIn(true)
