@@ -8,6 +8,7 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../../context/context";
 import "./PostScanPage.css";
+import { modifyPoints } from "../../../api/UserAPI";
 
 const PostScanPage = () => {
   const {
@@ -17,13 +18,14 @@ const PostScanPage = () => {
     barcode,
     setBarcode,
     allCustomers,
+    user,
   } = useContext(Context);
 
   const [userPoints, setUserPoints] = useState();
   const [convertedPoints, setConvertedPoints] = useState(0);
-  const [purchaseAmount, setPurchaseAmount] = useState();
+  const [purchaseAmount, setPurchaseAmount] = useState(0);
   const [discountedPoints, setDiscountedPoints] = useState();
-  const [scannedUser, setScannedUser] = useState();
+  const [scannedUser, setScannedUser] = useState("");
 
   console.log(scannedUser);
 
@@ -35,10 +37,11 @@ const PostScanPage = () => {
 
   const getUserPoints = () => {
     const subscribedResto =
-      currentUserId &&
+      user &&
+      user._id &&
       scannedUser &&
       scannedUser.subscribedRestos.find(
-        (resto) => resto.restaurantUserId === currentUserId
+        (resto) => resto.restaurantUserId === user._id
       );
     return subscribedResto?.points ?? 0;
   };
@@ -46,8 +49,11 @@ const PostScanPage = () => {
   // initialize values
   useEffect(() => {
     getScannedUser();
-    setUserPoints(getUserPoints());
   }, []);
+
+  useEffect(() => {
+    setUserPoints(getUserPoints());
+  }, [scannedUser]);
 
   const handleDiscount = () => {
     // from barcode, get user
@@ -61,7 +67,9 @@ const PostScanPage = () => {
         );
       subscribedResto.points = 0;
       setUserPoints(subscribedResto.points);
-      // update backend here with new points 
+      // update backend here with new points
+      modifyPoints(scannedUser._id, user._id, -currentPoints);
+      setPurchaseAmount(purchaseAmount - discountedPoints);
     } else {
       // no discount available message
     }
@@ -75,12 +83,12 @@ const PostScanPage = () => {
         (resto) => resto.restaurantUserId === currentUserId
       );
 
-      // send points over through API
-
-      // get updated points through API 
+    // send points over through API
+    modifyPoints(scannedUser._id, user._id, convertedPoints);
 
     subscribedResto.points += convertedPoints;
     setUserPoints(subscribedResto.points);
+    setPurchaseAmount(0);
   };
 
   useEffect(() => {
@@ -116,6 +124,7 @@ const PostScanPage = () => {
             onChange={(e) => {
               setPurchaseAmount(e.target.value);
             }}
+            value={purchaseAmount}
           />
         </div>
         <div className="post-scan-page-points-container">
