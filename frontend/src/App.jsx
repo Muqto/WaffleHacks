@@ -9,11 +9,7 @@ import BarcodePopup from "./components/BarcodePopup/BarcodePopup";
 import BarcodeScanner from "./components/BarcodeScanner/BarcodeScanner";
 import PostScanPage from "./components/BarcodeScanner/PostScanPage/PostScanPage";
 import { Context } from "./context/context";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ExplorePage from "./components/ExplorePage/ExplorePage";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import RestaurantFocusPage from "./components/RestaurantFocusPage/RestaurantFocusPage";
@@ -27,13 +23,13 @@ function App() {
   const [allUsers, setAllUsers] = useState([]);
   const [allReviews, setAllReviews] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+
   const [user, setUser] = useState({
     username: "",
     profilePicture: "",
     isStudent: true,
   });
-  const [barcode, setBarcode] = useState("64971f7d5846536b6831b2a8");
+  const [barcode, setBarcode] = useState("barcode");
 
   const [currentUserId, setCurrentUserId] = useState(0);
 
