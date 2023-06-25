@@ -101,7 +101,7 @@ const PostScanPage = () => {
   }, [purchaseAmount]);
 
   useEffect(() => {
-    const discountApplicable = Math.floor(userPoints / 100);
+    const discountApplicable = (userPoints / 100);
     setDiscountedPoints(discountApplicable);
   }, [userPoints]);
 
@@ -173,7 +173,7 @@ const PostScanPage = () => {
         </div>
         <div className="post-scan-page-points-container">
           <p className="post-scan-page-p">Discount Applicable:</p>
-          <h2 className="post-scan-page-points">{discountedPoints}</h2>
+          <h2 className="post-scan-page-points">$ {discountedPoints}</h2>
         </div>
 
         <p className="post-scan-page-p">

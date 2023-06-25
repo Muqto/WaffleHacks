@@ -25,6 +25,7 @@ const BarcodePopup = () => {
           <Barcode
             className="barcode-container"
             value="649634112950953cec504306"
+            // value="649634112950953504306"
           />
         ) : (
           <div className="barcode-scanner-container">
