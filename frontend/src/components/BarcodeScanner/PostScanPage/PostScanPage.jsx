@@ -4,6 +4,8 @@ import {
   Typography,
   TextField,
   InputAdornment,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../../context/context";
@@ -70,6 +72,7 @@ const PostScanPage = () => {
       // update backend here with new points
       modifyPoints(scannedUser._id, user._id, -currentPoints);
       setPurchaseAmount(purchaseAmount - discountedPoints);
+      setSuccessOpen(true);
     } else {
       // no discount available message
     }
@@ -89,6 +92,7 @@ const PostScanPage = () => {
     subscribedResto.points += convertedPoints;
     setUserPoints(subscribedResto.points);
     setPurchaseAmount(0);
+    setSuccessOpenPoints(true);
   };
 
   useEffect(() => {
@@ -101,8 +105,40 @@ const PostScanPage = () => {
     setDiscountedPoints(discountApplicable);
   }, [userPoints]);
 
+  const [successOpen, setSuccessOpen] = useState(false);
+  const [successOpenPoints, setSuccessOpenPoints] = useState(false);
+  const handleClose = (event) => {
+    setSuccessOpen(false);
+  };
+  const handlePointsClose = (event) => {
+    setSuccessOpenPoints(false);
+  };
   return (
     <div className="post-scan-page-container">
+      <Snackbar
+        open={successOpen}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert onClose={handleClose} severity="success" sx={{ width: "50%" }}>
+          Discount Applied!
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={successOpenPoints}
+        autoHideDuration={6000}
+        onClose={handlePointsClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          onClose={handlePointsClose}
+          severity="success"
+          sx={{ width: "50%" }}
+        >
+          Points Sent!
+        </Alert>
+      </Snackbar>
       <div className="post-scan-page-header">
         <Avatar className="post-scan-page-avatar" />
       </div>
