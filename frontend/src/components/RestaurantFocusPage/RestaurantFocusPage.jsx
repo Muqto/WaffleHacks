@@ -8,6 +8,7 @@ import {
   IconButton,
   Rating,
   TextField,
+  Avatar,
 } from "@mui/material";
 import React, { useEffect, useState, useContext } from "react";
 import { Context } from "../../context/context";
@@ -23,11 +24,12 @@ import {
   fetchRestaurants,
   addSubscription,
   addNewReview,
-  modifyPoints
+  modifyPoints,
 } from "../../api/UserAPI";
 
 function RestaurantFocusPage() {
-  const { currentUserId, allCustomers, setAllCustomers, user, setUser } = useContext(Context);
+  const { currentUserId, allCustomers, setAllCustomers, user, setUser } =
+    useContext(Context);
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setReviewStars(0);
@@ -88,7 +90,10 @@ function RestaurantFocusPage() {
       customerId: currentUserId,
       ownerId: currentRestaurant[0]._id,
     });
-    setAllCustomers([...allCustomers.filter(student => student._id !== currentUserId), res.data])
+    setAllCustomers([
+      ...allCustomers.filter((student) => student._id !== currentUserId),
+      res.data,
+    ]);
   };
 
   const [reviewText, setReviewText] = useState("");
@@ -103,13 +108,16 @@ function RestaurantFocusPage() {
       reviewText: reviewText,
       stars: reviewStars,
     });
-    console.log(res.data)
-    setRestaurantReviews([...restaurantReviews, res.data.newReview])
+    console.log(res.data);
+    setRestaurantReviews([...restaurantReviews, res.data.newReview]);
     if (!currentStudentUser.earnedReviewPoints) {
-      const result = await modifyPoints(user._id, id, 100)
+      const result = await modifyPoints(user._id, id, 100);
 
-      setAllCustomers([...allCustomers.filter(student => student._id !== currentUserId), result.data])
-    } 
+      setAllCustomers([
+        ...allCustomers.filter((student) => student._id !== currentUserId),
+        result.data,
+      ]);
+    }
   };
 
   const navigate = useNavigate();
@@ -127,7 +135,8 @@ function RestaurantFocusPage() {
           >
             <ArrowBackIosIcon className="restaurant-focus-page-return-arrow-icon" />
           </IconButton>
-          <div className="restaurant-focus-page-image"></div>
+
+          <Avatar className="restaurant-focus-page-avatar" />
           <div className="restaurant-focus-page-info-panel">
             <IconButton
               onClick={handleSubscriptionAddition}
@@ -139,19 +148,21 @@ function RestaurantFocusPage() {
               {currentRestaurant[0]?.username}
             </h1>
             {restaurantReviews ? (
-              restaurantReviews
-                .slice(0, 3)
-                .map((review) => {
-                  const reviewerUser = allCustomers.find(cus => cus._id === review.reviewerId)
-                  console.log(reviewerUser)
-                  const reviewerProfilePicture = reviewerUser.profilePicture
-                  const reviewerName = reviewerUser.username
-                  return <ReviewCard
+              restaurantReviews.slice(0, 3).map((review) => {
+                const reviewerUser = allCustomers.find(
+                  (cus) => cus._id === review.reviewerId
+                );
+                console.log(reviewerUser);
+                const reviewerProfilePicture = reviewerUser.profilePicture;
+                const reviewerName = reviewerUser.username;
+                return (
+                  <ReviewCard
                     review={`"${review.reviewText}"`}
                     numberOfStars={review.stars}
                     profilePicture={reviewerProfilePicture}
                     reviewer={reviewerName}
                   />
+                );
               })
             ) : (
               <div className="restaurant-focus-page-progress-container">
@@ -159,33 +170,36 @@ function RestaurantFocusPage() {
               </div>
             )}
             ...
-            {currentStudentUser.subscribedRestos.find(resto => resto.restaurantUserId === id) ? 
-            <>
+            {currentStudentUser.subscribedRestos.find(
+              (resto) => resto.restaurantUserId === id
+            ) ? (
+              <>
+                <Button
+                  className="restaurant-focus-page-review-button"
+                  variant="contained"
+                  startIcon={<EditIcon />}
+                  onClick={handleClick}
+                >
+                  Leave a Review
+                </Button>
+                <Button
+                  className="restaurant-focus-page-review-button-unsubscribe"
+                  variant="outlined"
+                  color="error"
+                  onClick={handleSubscriptionAddition}
+                >
+                  Unsubscribe
+                </Button>
+              </>
+            ) : (
               <Button
                 className="restaurant-focus-page-review-button"
                 variant="contained"
-                startIcon={<EditIcon />}
-                onClick={handleClick}
+                onClick={handleSubscriptionAddition}
               >
-                Leave a Review
+                Subscribe
               </Button>
-              <Button
-              className="restaurant-focus-page-review-button-unsubscribe"
-                variant="outlined"
-                color="error"
-                onClick={handleSubscriptionAddition}>
-                Unsubscribe
-              </Button>
-            </>
-             :
-            <Button
-              className="restaurant-focus-page-review-button"
-              variant="contained"
-              onClick={handleSubscriptionAddition}
-            >
-              Subscribe
-            </Button>
-            }
+            )}
             <Dialog
               style={{ borderRadius: "30px !important" }}
               fullWidth
