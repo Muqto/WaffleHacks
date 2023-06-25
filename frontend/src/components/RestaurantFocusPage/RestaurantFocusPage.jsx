@@ -138,12 +138,6 @@ function RestaurantFocusPage() {
 
           <Avatar src={currentRestaurant[0]?.profilePicture} className="restaurant-focus-page-avatar" />
           <div className="restaurant-focus-page-info-panel">
-            <IconButton
-              onClick={handleSubscriptionAddition}
-              className="restaurant-focus-page-add-icon-button"
-            >
-              <AddCircleIcon className="restaurant-focus-page-add-icon" />
-            </IconButton>
             <h1 className="restaurant-focus-page-restaurant-name">
               {currentRestaurant[0]?.username}
             </h1>
