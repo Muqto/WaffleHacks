@@ -7,7 +7,8 @@
     <img src="frontend/public/My project-1.jpg" alt="Logo" width="360" height="360">
   </a>
 
-  <h3 align="center">MunchPoints</h3>
+  <h3 align="center"><a href="https://devpost.com/software/munchpoints"> MunchPoints </a></h3>
+  
 
   <p align="center">
     Basically, the platform works on points. When a student user makes a purchase at a MunchPoint registered restaurant, the user gains points that they can then use for a discount at that same restaurant. They can also get points for completing other tasks, such as posting a review (for the first time) on a restaurant's page. To accomplish this, there are two types of accounts that can be created on the platform: restaurant (business) and student (user) accounts. As a business account, you can scan barcodes to identify user accounts, and choose to either give points or apply a discount. On the other hand, student accounts are equipped with a dashboard where they can see the restaurants that they are "subscribed" (can receive points from) to, a barcode for identification, and extra features to better know the restaurants available to them on the platform.  
